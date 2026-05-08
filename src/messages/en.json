@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "home": "Home",
+    "tools": "Tools",
+    "prompts": "Prompts",
+    "admin": "Admin"
+  },
+  "home": {
+    "heroTitle": "Discover the best AI tools",
+    "heroSubtitle": "Short reviews, ready-to-use prompts and direct links to the strongest AI generators for image, video and text.",
+    "heroCta": "Browse the tools",
+    "featuredTitle": "Featured",
+    "allToolsTitle": "All tools",
+    "viewAll": "View all",
+    "noTools": "No tools have been added yet."
+  },
+  "tools": {
+    "title": "AI Tools",
+    "subtitle": "A curated catalog of AI generators we use and recommend.",
+    "category": "Category",
+    "promptsCount": "{count, plural, =0 {No prompts} =1 {1 prompt} other {# prompts}}",
+    "open": "Open tool",
+    "details": "See prompts"
+  },
+  "tool": {
+    "promptsTitle": "Ready-to-use prompts",
+    "openCta": "Try {name}",
+    "noPrompts": "No prompts have been added for this tool yet.",
+    "copyPrompt": "Copy",
+    "copied": "Copied!",
+    "back": "Back to catalog",
+    "affiliateNote": "This is an affiliate link — you support the project at no extra cost to you."
+  },
+  "footer": {
+    "tagline": "A catalog of AI tools and prompts.",
+    "rights": "All rights reserved."
+  },
+  "admin": {
+    "loginTitle": "Admin sign in",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "invalidCredentials": "Invalid credentials.",
+    "dashboard": "Dashboard",
+    "tools": "Tools",
+    "prompts": "Prompts",
+    "addTool": "New tool",
+    "addPrompt": "New prompt",
+    "editTool": "Edit tool",
+    "editPrompt": "Edit prompt",
+    "save": "Save",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "confirmDelete": "Are you sure?"
+  }
+}

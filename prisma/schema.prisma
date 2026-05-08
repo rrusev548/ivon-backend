@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model Tool {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  nameEn        String
+  nameBg        String
+  taglineEn     String
+  taglineBg     String
+  descriptionEn String
+  descriptionBg String
+  iconUrl       String?
+  affiliateUrl  String
+  category      String   @default("image")
+  featured      Boolean  @default(false)
+  sortOrder     Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  prompts       Prompt[]
+}
+
+model Prompt {
+  id        String   @id @default(cuid())
+  toolId    String
+  tool      Tool     @relation(fields: [toolId], references: [id], onDelete: Cascade)
+  titleEn   String
+  titleBg   String
+  contentEn String
+  contentBg String
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([toolId])
+}
