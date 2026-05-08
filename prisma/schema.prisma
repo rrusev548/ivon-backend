@@ -14,36 +14,136 @@ model AdminUser {
   createdAt    DateTime @default(now())
 }
 
-model Tool {
-  id            String   @id @default(cuid())
-  slug          String   @unique
-  nameEn        String
-  nameBg        String
-  taglineEn     String
-  taglineBg     String
-  descriptionEn String
-  descriptionBg String
-  iconUrl       String?
-  affiliateUrl  String
-  category      String   @default("image")
-  featured      Boolean  @default(false)
-  sortOrder     Int      @default(0)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  prompts       Prompt[]
+model User {
+  id           String       @id @default(cuid())
+  email        String       @unique
+  passwordHash String
+  nameBg       String?
+  nameEn       String?
+  nameDe       String?
+  createdAt    DateTime     @default(now())
+  enrollments  Enrollment[]
 }
 
-model Prompt {
-  id        String   @id @default(cuid())
-  toolId    String
-  tool      Tool     @relation(fields: [toolId], references: [id], onDelete: Cascade)
-  titleEn   String
+model Course {
+  id          String       @id @default(cuid())
+  slug        String       @unique
+  level       Int
+  titleBg     String
+  titleEn     String
+  titleDe     String
+  shortDescBg String
+  shortDescEn String
+  shortDescDe String
+  longDescBg  String
+  longDescEn  String
+  longDescDe  String
+  coverUrl    String?
+  priceCents  Int
+  currency    String       @default("EUR")
+  published   Boolean      @default(true)
+  autoInvoice Boolean      @default(false)
+  sortOrder   Int          @default(0)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  resources   Resource[]
+  enrollments Enrollment[]
+}
+
+model Resource {
+  id        String  @id @default(cuid())
+  courseId  String
+  course    Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
   titleBg   String
-  contentEn String
-  contentBg String
+  titleEn   String
+  titleDe   String
+  fileUrl   String
+  fileSize  Int?
+  fileType  String?
+  sortOrder Int     @default(0)
+
+  @@index([courseId])
+}
+
+model Enrollment {
+  id          String   @id @default(cuid())
+  userId      String
+  courseId    String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  source      String
+  externalId  String?
+  amountCents Int
+  currency    String
+  createdAt   DateTime @default(now())
+
+  @@unique([userId, courseId])
+  @@index([courseId])
+}
+
+model PopupConfig {
+  id         String   @id @default("singleton")
+  enabled    Boolean  @default(false)
+  titleBg    String
+  titleEn    String
+  titleDe    String
+  bodyBg     String
+  bodyEn     String
+  bodyDe     String
+  ctaLabelBg String
+  ctaLabelEn String
+  ctaLabelDe String
+  ctaUrl     String
+  delaySec   Int      @default(20)
+  updatedAt  DateTime @updatedAt
+}
+
+model AffiliateLink {
+  id        String   @id @default(cuid())
+  nameBg    String
+  nameEn    String
+  nameDe    String
+  descBg    String
+  descEn    String
+  descDe    String
+  url       String
+  iconUrl   String?
   sortOrder Int      @default(0)
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+}
 
-  @@index([toolId])
+model Testimonial {
+  id        String  @id @default(cuid())
+  authorBg  String
+  authorEn  String
+  authorDe  String
+  roleBg    String?
+  roleEn    String?
+  roleDe    String?
+  photoUrl  String?
+  quoteBg   String
+  quoteEn   String
+  quoteDe   String
+  rating    Int     @default(5)
+  sortOrder Int     @default(0)
+  published Boolean @default(true)
+}
+
+model Credential {
+  id        String @id @default(cuid())
+  valueBg   String
+  valueEn   String
+  valueDe   String
+  labelBg   String
+  labelEn   String
+  labelDe   String
+  sortOrder Int    @default(0)
+}
+
+model Subscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  source    String   @default("popup")
+  locale    String?
+  createdAt DateTime @default(now())
 }

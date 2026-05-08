@@ -29,13 +29,12 @@ export default function LoginForm() {
   }
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="card w-full max-w-sm space-y-4 p-8"
-    >
-      <h1 className="text-2xl font-bold">Admin sign in</h1>
+    <form onSubmit={onSubmit} className="card-glass w-full max-w-sm space-y-4 p-8">
+      <h1 className="serif text-2xl font-medium text-cream-50">Admin sign in</h1>
       <div>
-        <label className="label" htmlFor="email">Email</label>
+        <label className="label" htmlFor="email">
+          Email
+        </label>
         <input
           id="email"
           className="input"
@@ -47,7 +46,9 @@ export default function LoginForm() {
         />
       </div>
       <div>
-        <label className="label" htmlFor="password">Password</label>
+        <label className="label" htmlFor="password">
+          Password
+        </label>
         <input
           id="password"
           className="input"
@@ -58,7 +59,7 @@ export default function LoginForm() {
           autoComplete="current-password"
         />
       </div>
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm text-red-300">{error}</p>}
       <button className="btn-primary w-full" disabled={loading}>
         {loading ? '…' : 'Sign in'}
       </button>

@@ -1,37 +1,47 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useTransition } from 'react';
 import { locales, type Locale } from '@/lib/i18n';
 
-export default function LocaleSwitcher({ current }: { current: Locale }) {
-  const pathname = usePathname();
+const labels: Record<Locale, string> = {
+  bg: 'Български',
+  en: 'English',
+  de: 'Deutsch',
+};
 
-  function pathFor(locale: Locale) {
-    if (!pathname) return `/${locale}`;
+export default function LocaleSwitcher({ current }: { current: Locale }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [isPending, startTransition] = useTransition();
+
+  const change = (next: Locale) => {
+    if (!pathname) return;
     const segments = pathname.split('/');
     if (segments[1] && (locales as readonly string[]).includes(segments[1])) {
-      segments[1] = locale;
-      return segments.join('/') || `/${locale}`;
+      segments[1] = next;
+    } else {
+      segments.splice(1, 0, next);
     }
-    return `/${locale}${pathname}`;
-  }
+    const target = segments.join('/') || `/${next}`;
+    startTransition(() => router.replace(target));
+  };
 
   return (
-    <div className="flex items-center gap-1 text-xs">
-      {locales.map((l) => (
-        <Link
-          key={l}
-          href={pathFor(l)}
-          className={`rounded px-2 py-1 uppercase ${
-            l === current
-              ? 'bg-brand-600 text-white'
-              : 'text-slate-500 hover:bg-slate-100'
-          }`}
-        >
-          {l}
-        </Link>
-      ))}
-    </div>
+    <label className="inline-flex items-center gap-2 text-xs text-cream-100/60">
+      <select
+        value={current}
+        onChange={(e) => change(e.target.value as Locale)}
+        disabled={isPending}
+        className="rounded-md border border-cream-100/15 bg-ink-800 px-2 py-1 text-cream-100 transition focus:border-gold-300/50 focus:outline-none"
+        aria-label="Language"
+      >
+        {locales.map((l) => (
+          <option key={l} value={l}>
+            {labels[l]}
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }

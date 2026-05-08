@@ -1,39 +1,91 @@
 {
   "nav": {
     "home": "Home",
-    "tools": "Tools",
-    "prompts": "Prompts",
-    "admin": "Admin"
+    "courses": "Courses",
+    "about": "About",
+    "account": "Account",
+    "login": "Sign in",
+    "register": "Sign up"
   },
   "home": {
-    "heroTitle": "Discover the best AI tools",
-    "heroSubtitle": "Short reviews, ready-to-use prompts and direct links to the strongest AI generators for image, video and text.",
-    "heroCta": "Browse the tools",
-    "featuredTitle": "Featured",
-    "allToolsTitle": "All tools",
-    "viewAll": "View all",
-    "noTools": "No tools have been added yet."
+    "eyebrow": "Premium training · AI and social media",
+    "heroTitle": "Expert level. Repeatable results.",
+    "heroSubtitle": "Three programs built on real principles — no hype, no fake hacks. Only what holds up over time.",
+    "heroPrimaryCta": "See the courses",
+    "heroSecondaryCta": "About us",
+    "trustEyebrow": "Proof",
+    "credentialsTitle": "Why people trust us",
+    "coursesEyebrow": "The program",
+    "coursesTitle": "Three levels. One clear trajectory.",
+    "coursesSubtitle": "Start with foundations, add a system, scale a business.",
+    "viewCourse": "View the course",
+    "testimonialsEyebrow": "Testimonials",
+    "testimonialsTitle": "What students say",
+    "aboutEyebrow": "Who we are",
+    "aboutTeaserTitle": "We don't sell dreams. We share experience.",
+    "aboutTeaserBody": "Behind the program are years in the industry, real clients and measurable results. Meet the team.",
+    "aboutTeaserCta": "About us"
   },
-  "tools": {
-    "title": "AI Tools",
-    "subtitle": "A curated catalog of AI generators we use and recommend.",
-    "category": "Category",
-    "promptsCount": "{count, plural, =0 {No prompts} =1 {1 prompt} other {# prompts}}",
-    "open": "Open tool",
-    "details": "See prompts"
+  "courses": {
+    "title": "Courses",
+    "subtitle": "We build expertise systematically — one level at a time.",
+    "level": "Level {level}",
+    "buy": "Enrol",
+    "from": "From",
+    "longDescTitle": "About the program",
+    "buyCta": "Enrol with 15% off this week",
+    "secureNote": "Secure checkout via Stripe · cards, Apple Pay, Google Pay, PayPal, Klarna, SEPA and more."
   },
-  "tool": {
-    "promptsTitle": "Ready-to-use prompts",
-    "openCta": "Try {name}",
-    "noPrompts": "No prompts have been added for this tool yet.",
-    "copyPrompt": "Copy",
-    "copied": "Copied!",
-    "back": "Back to catalog",
-    "affiliateNote": "This is an affiliate link — you support the project at no extra cost to you."
+  "about": {
+    "eyebrow": "About",
+    "title": "Who we are",
+    "subtitle": "The people behind the program.",
+    "followIg": "Instagram",
+    "followTk": "TikTok",
+    "affiliateTitle": "Tools we use",
+    "affiliateSubtitle": "We only recommend what we've actually worked with.",
+    "openLink": "Open"
+  },
+  "auth": {
+    "loginTitle": "Sign in to your account",
+    "registerTitle": "Create an account",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "haveAccount": "Already have an account?",
+    "noAccount": "Don't have an account?",
+    "logout": "Sign out",
+    "invalid": "Invalid credentials.",
+    "exists": "This email is already registered.",
+    "weakPassword": "Password must be at least 8 characters."
+  },
+  "account": {
+    "title": "My account",
+    "myCourses": "My courses",
+    "noCourses": "You haven't purchased any courses yet.",
+    "browseCourses": "See the courses",
+    "downloadResources": "Resources",
+    "open": "Open"
+  },
+  "checkout": {
+    "successTitle": "Thanks for your purchase!",
+    "successBody": "The course has been added to your account. You can open it any time.",
+    "goToAccount": "Go to my account"
+  },
+  "popup": {
+    "close": "Close",
+    "emailPlaceholder": "Your email (optional)"
   },
   "footer": {
-    "tagline": "A catalog of AI tools and prompts.",
-    "rights": "All rights reserved."
+    "tagline": "Three levels. One clear trajectory to a sustainable business.",
+    "rights": "All rights reserved.",
+    "language": "Language"
+  },
+  "social": {
+    "instagram": "Instagram",
+    "tiktok": "TikTok"
   },
   "admin": {
     "loginTitle": "Admin sign in",
@@ -43,12 +95,13 @@
     "signOut": "Sign out",
     "invalidCredentials": "Invalid credentials.",
     "dashboard": "Dashboard",
-    "tools": "Tools",
-    "prompts": "Prompts",
-    "addTool": "New tool",
-    "addPrompt": "New prompt",
-    "editTool": "Edit tool",
-    "editPrompt": "Edit prompt",
+    "courses": "Courses",
+    "users": "Users",
+    "enrollments": "Enrollments",
+    "popup": "Popup",
+    "affiliates": "Affiliates",
+    "testimonials": "Testimonials",
+    "credentials": "Credentials",
     "save": "Save",
     "delete": "Delete",
     "cancel": "Cancel",

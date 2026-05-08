@@ -1,24 +1,27 @@
-import type { Tool, Prompt } from '@prisma/client';
 import type { Locale } from './i18n';
 
-export function pickToolFields(tool: Tool, locale: Locale) {
-  return {
-    id: tool.id,
-    slug: tool.slug,
-    name: locale === 'bg' ? tool.nameBg : tool.nameEn,
-    tagline: locale === 'bg' ? tool.taglineBg : tool.taglineEn,
-    description: locale === 'bg' ? tool.descriptionBg : tool.descriptionEn,
-    iconUrl: tool.iconUrl,
-    affiliateUrl: tool.affiliateUrl,
-    category: tool.category,
-    featured: tool.featured,
-  };
+const SUFFIX: Record<Locale, 'Bg' | 'En' | 'De'> = {
+  bg: 'Bg',
+  en: 'En',
+  de: 'De',
+};
+
+export function pick<T extends Record<string, unknown>>(
+  item: T,
+  base: string,
+  locale: Locale,
+): string {
+  const key = `${base}${SUFFIX[locale]}` as keyof T;
+  const value = item[key];
+  return typeof value === 'string' ? value : '';
 }
 
-export function pickPromptFields(prompt: Prompt, locale: Locale) {
-  return {
-    id: prompt.id,
-    title: locale === 'bg' ? prompt.titleBg : prompt.titleEn,
-    content: locale === 'bg' ? prompt.contentBg : prompt.contentEn,
-  };
+export function pickOptional<T extends Record<string, unknown>>(
+  item: T,
+  base: string,
+  locale: Locale,
+): string | null {
+  const key = `${base}${SUFFIX[locale]}` as keyof T;
+  const value = item[key];
+  return typeof value === 'string' ? value : null;
 }

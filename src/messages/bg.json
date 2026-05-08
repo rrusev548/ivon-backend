@@ -1,39 +1,91 @@
 {
   "nav": {
     "home": "Начало",
-    "tools": "Инструменти",
-    "prompts": "Промптове",
-    "admin": "Админ"
+    "courses": "Курсове",
+    "about": "За нас",
+    "account": "Профил",
+    "login": "Вход",
+    "register": "Регистрация"
   },
   "home": {
-    "heroTitle": "Открий най-добрите AI инструменти",
-    "heroSubtitle": "Кратки описания, готови промптове и линкове към най-силните AI генератори за изображения, видео и текст.",
-    "heroCta": "Виж инструментите",
-    "featuredTitle": "Препоръчани",
-    "allToolsTitle": "Всички инструменти",
-    "viewAll": "Виж всички",
-    "noTools": "Все още няма добавени инструменти."
+    "eyebrow": "Премиум обучение · AI и социални мрежи",
+    "heroTitle": "Експертно ниво. Повторим резултат.",
+    "heroSubtitle": "Три програми, изградени върху истински принципи — без хайп, без бутафорни хакове. Само това, което работи дълго.",
+    "heroPrimaryCta": "Виж курсовете",
+    "heroSecondaryCta": "За нас",
+    "trustEyebrow": "Доказателство",
+    "credentialsTitle": "Защо ни се доверяват",
+    "coursesEyebrow": "Програмата",
+    "coursesTitle": "Три нива. Една ясна траектория.",
+    "coursesSubtitle": "Започваш с основите, добавяш система, мащабираш бизнеса.",
+    "viewCourse": "Виж курса",
+    "testimonialsEyebrow": "Отзиви",
+    "testimonialsTitle": "Какво казват студентите",
+    "aboutEyebrow": "Кои сме ние",
+    "aboutTeaserTitle": "Не продаваме мечти. Споделяме опит.",
+    "aboutTeaserBody": "Зад програмата стоят години в индустрията, реални клиенти и измерими резултати. Запознай се с екипа.",
+    "aboutTeaserCta": "За нас"
   },
-  "tools": {
-    "title": "AI Инструменти",
-    "subtitle": "Каталог с AI генератори, които използваме и препоръчваме.",
-    "category": "Категория",
-    "promptsCount": "{count, plural, =0 {Няма промптове} =1 {1 промпт} other {# промпта}}",
-    "open": "Към инструмента",
-    "details": "Виж промптовете"
+  "courses": {
+    "title": "Курсове",
+    "subtitle": "Изграждаме експертиза систематично — едно ниво след друго.",
+    "level": "Ниво {level}",
+    "buy": "Запиши се",
+    "from": "От",
+    "longDescTitle": "За програмата",
+    "buyCta": "Запиши се с −15% тази седмица",
+    "secureNote": "Сигурно плащане през Stripe · карти, Apple Pay, Google Pay, PayPal, Klarna, SEPA и още."
   },
-  "tool": {
-    "promptsTitle": "Готови промптове",
-    "openCta": "Опитай {name}",
-    "noPrompts": "Все още няма промптове за този инструмент.",
-    "copyPrompt": "Копирай",
-    "copied": "Копирано!",
-    "back": "Назад към каталога",
-    "affiliateNote": "Линкът е партньорски — подкрепяш проекта без допълнителна цена за теб."
+  "about": {
+    "eyebrow": "За нас",
+    "title": "Кои сме ние",
+    "subtitle": "Хората зад програмата.",
+    "followIg": "Instagram",
+    "followTk": "TikTok",
+    "affiliateTitle": "Инструменти, които ползваме",
+    "affiliateSubtitle": "Препоръчваме само това, с което сме работили.",
+    "openLink": "Отвори"
+  },
+  "auth": {
+    "loginTitle": "Влез в профила си",
+    "registerTitle": "Създай профил",
+    "email": "Имейл",
+    "password": "Парола",
+    "name": "Име",
+    "signIn": "Влез",
+    "signUp": "Регистрация",
+    "haveAccount": "Имаш профил?",
+    "noAccount": "Нямаш профил?",
+    "logout": "Изход",
+    "invalid": "Невалидни данни.",
+    "exists": "Имейлът вече е регистриран.",
+    "weakPassword": "Паролата трябва да е поне 8 символа."
+  },
+  "account": {
+    "title": "Моят профил",
+    "myCourses": "Моите курсове",
+    "noCourses": "Все още нямаш закупени курсове.",
+    "browseCourses": "Виж курсовете",
+    "downloadResources": "Ресурси",
+    "open": "Отвори"
+  },
+  "checkout": {
+    "successTitle": "Благодаря за покупката!",
+    "successBody": "Курсът е добавен в профила ти. Можеш да го отвориш по всяко време.",
+    "goToAccount": "Към профила"
+  },
+  "popup": {
+    "close": "Затвори",
+    "emailPlaceholder": "Твоят имейл (по желание)"
   },
   "footer": {
-    "tagline": "Каталог с AI инструменти и промптове.",
-    "rights": "Всички права запазени."
+    "tagline": "Три нива. Една ясна траектория към устойчив бизнес.",
+    "rights": "Всички права запазени.",
+    "language": "Език"
+  },
+  "social": {
+    "instagram": "Instagram",
+    "tiktok": "TikTok"
   },
   "admin": {
     "loginTitle": "Админ вход",
@@ -43,12 +95,13 @@
     "signOut": "Изход",
     "invalidCredentials": "Невалидни данни за вход.",
     "dashboard": "Табло",
-    "tools": "Инструменти",
-    "prompts": "Промптове",
-    "addTool": "Нов инструмент",
-    "addPrompt": "Нов промпт",
-    "editTool": "Редактирай инструмент",
-    "editPrompt": "Редактирай промпт",
+    "courses": "Курсове",
+    "users": "Потребители",
+    "enrollments": "Записвания",
+    "popup": "Popup",
+    "affiliates": "Affiliate",
+    "testimonials": "Отзиви",
+    "credentials": "Статистики",
     "save": "Запази",
     "delete": "Изтрий",
     "cancel": "Отказ",

@@ -1,0 +1,110 @@
+{
+  "nav": {
+    "home": "Start",
+    "courses": "Kurse",
+    "about": "Über uns",
+    "account": "Konto",
+    "login": "Anmelden",
+    "register": "Registrieren"
+  },
+  "home": {
+    "eyebrow": "Premium-Training · KI und Social Media",
+    "heroTitle": "Expert-Niveau. Wiederholbare Ergebnisse.",
+    "heroSubtitle": "Drei Programme, gebaut auf echten Prinzipien — kein Hype, keine billigen Tricks. Nur was langfristig trägt.",
+    "heroPrimaryCta": "Kurse ansehen",
+    "heroSecondaryCta": "Über uns",
+    "trustEyebrow": "Beweis",
+    "credentialsTitle": "Warum man uns vertraut",
+    "coursesEyebrow": "Das Programm",
+    "coursesTitle": "Drei Stufen. Eine klare Trajektorie.",
+    "coursesSubtitle": "Beginne mit den Grundlagen, ergänze ein System, skaliere ein Geschäft.",
+    "viewCourse": "Zum Kurs",
+    "testimonialsEyebrow": "Stimmen",
+    "testimonialsTitle": "Was Studierende sagen",
+    "aboutEyebrow": "Wer wir sind",
+    "aboutTeaserTitle": "Wir verkaufen keine Träume. Wir teilen Erfahrung.",
+    "aboutTeaserBody": "Hinter dem Programm stehen Jahre in der Branche, echte Kunden und messbare Ergebnisse. Lerne das Team kennen.",
+    "aboutTeaserCta": "Über uns"
+  },
+  "courses": {
+    "title": "Kurse",
+    "subtitle": "Expertise wird systematisch aufgebaut — Stufe für Stufe.",
+    "level": "Stufe {level}",
+    "buy": "Anmelden",
+    "from": "Ab",
+    "longDescTitle": "Über das Programm",
+    "buyCta": "Diese Woche mit 15 % Rabatt anmelden",
+    "secureNote": "Sichere Zahlung über Stripe · Karten, Apple Pay, Google Pay, PayPal, Klarna, SEPA und mehr."
+  },
+  "about": {
+    "eyebrow": "Über uns",
+    "title": "Wer wir sind",
+    "subtitle": "Die Menschen hinter dem Programm.",
+    "followIg": "Instagram",
+    "followTk": "TikTok",
+    "affiliateTitle": "Werkzeuge, die wir nutzen",
+    "affiliateSubtitle": "Wir empfehlen nur, womit wir auch wirklich gearbeitet haben.",
+    "openLink": "Öffnen"
+  },
+  "auth": {
+    "loginTitle": "In dein Konto einloggen",
+    "registerTitle": "Konto erstellen",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "name": "Name",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
+    "haveAccount": "Schon ein Konto?",
+    "noAccount": "Noch kein Konto?",
+    "logout": "Abmelden",
+    "invalid": "Ungültige Zugangsdaten.",
+    "exists": "Diese E-Mail ist bereits registriert.",
+    "weakPassword": "Das Passwort muss mindestens 8 Zeichen haben."
+  },
+  "account": {
+    "title": "Mein Konto",
+    "myCourses": "Meine Kurse",
+    "noCourses": "Du hast noch keine Kurse gekauft.",
+    "browseCourses": "Kurse ansehen",
+    "downloadResources": "Materialien",
+    "open": "Öffnen"
+  },
+  "checkout": {
+    "successTitle": "Danke für deinen Kauf!",
+    "successBody": "Der Kurs wurde deinem Konto hinzugefügt. Du kannst ihn jederzeit öffnen.",
+    "goToAccount": "Zum Konto"
+  },
+  "popup": {
+    "close": "Schließen",
+    "emailPlaceholder": "Deine E-Mail (optional)"
+  },
+  "footer": {
+    "tagline": "Drei Stufen. Eine klare Trajektorie zu einem nachhaltigen Geschäft.",
+    "rights": "Alle Rechte vorbehalten.",
+    "language": "Sprache"
+  },
+  "social": {
+    "instagram": "Instagram",
+    "tiktok": "TikTok"
+  },
+  "admin": {
+    "loginTitle": "Admin-Login",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "signIn": "Anmelden",
+    "signOut": "Abmelden",
+    "invalidCredentials": "Ungültige Zugangsdaten.",
+    "dashboard": "Dashboard",
+    "courses": "Kurse",
+    "users": "Nutzer",
+    "enrollments": "Einschreibungen",
+    "popup": "Popup",
+    "affiliates": "Affiliates",
+    "testimonials": "Stimmen",
+    "credentials": "Statistiken",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "cancel": "Abbrechen",
+    "confirmDelete": "Bist du sicher?"
+  }
+}

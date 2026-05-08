@@ -5,26 +5,92 @@
 @layer base {
   html {
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
   body {
-    @apply bg-slate-50 text-slate-900;
+    @apply bg-ink-900 text-cream-100;
+    background-image:
+      radial-gradient(1200px 600px at 80% -10%, rgba(0, 229, 255, 0.07), transparent 60%),
+      radial-gradient(900px 700px at -10% 30%, rgba(232, 199, 126, 0.06), transparent 60%);
+  }
+  ::selection {
+    @apply bg-gold-300/30 text-cream-50;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-lg bg-brand-600 px-4 py-2 font-medium text-white shadow-sm transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center rounded-xl bg-gold-300 px-5 py-3 font-medium text-ink-900 shadow-[0_8px_30px_-12px_rgba(232,199,126,0.6)] transition hover:bg-gold-200 hover:shadow-[0_8px_40px_-8px_rgba(232,199,126,0.8)] focus:outline-none focus:ring-2 focus:ring-gold-300/60 focus:ring-offset-2 focus:ring-offset-ink-900;
+  }
+  .btn-cta {
+    @apply btn-primary animate-ctaPulse;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2 font-medium text-slate-700 transition hover:bg-slate-100;
+    @apply inline-flex items-center justify-center rounded-xl border border-cream-100/15 bg-white/5 px-5 py-3 font-medium text-cream-100 backdrop-blur transition hover:border-cream-100/30 hover:bg-white/10;
+  }
+  .btn-outline-gold {
+    @apply inline-flex items-center justify-center rounded-xl border border-gold-300/40 px-5 py-3 font-medium text-gold-300 transition hover:border-gold-300 hover:bg-gold-300/10;
   }
   .input {
-    @apply block w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500;
+    @apply block w-full rounded-xl border border-cream-100/15 bg-ink-800/60 px-4 py-3 text-cream-100 placeholder-cream-100/40 shadow-inner backdrop-blur focus:border-gold-300/50 focus:outline-none focus:ring-1 focus:ring-gold-300/40;
   }
   .label {
-    @apply mb-1 block text-sm font-medium text-slate-700;
+    @apply mb-1.5 block text-sm font-medium text-cream-100/80;
   }
-  .card {
-    @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+  .card-glass {
+    @apply rounded-3xl border border-cream-100/10 bg-white/[0.03] backdrop-blur-xl shadow-[0_30px_80px_-30px_rgba(0,0,0,0.5)];
+  }
+  .gold-card {
+    @apply card-glass relative overflow-hidden transition duration-500 hover:border-gold-300/40 hover:shadow-[0_30px_80px_-20px_rgba(232,199,126,0.25)];
+  }
+  .gold-card::before {
+    content: '';
+    @apply pointer-events-none absolute inset-0 opacity-0 transition duration-500;
+    background: radial-gradient(600px 200px at 50% -10%, rgba(232, 199, 126, 0.18), transparent 60%);
+  }
+  .gold-card:hover::before {
+    @apply opacity-100;
+  }
+  .serif {
+    font-family: var(--font-fraunces), ui-serif, Georgia, serif;
+  }
+  .heading-xl {
+    @apply serif text-balance text-4xl font-medium tracking-tight text-cream-50 sm:text-5xl md:text-6xl;
+    letter-spacing: -0.02em;
+  }
+  .heading-lg {
+    @apply serif text-balance text-3xl font-medium tracking-tight text-cream-50 sm:text-4xl;
+    letter-spacing: -0.015em;
+  }
+  .heading-md {
+    @apply serif text-balance text-2xl font-medium tracking-tight text-cream-50;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-gold-300/80;
+  }
+  .divider-gold {
+    @apply h-px w-12 bg-gradient-to-r from-gold-300 to-transparent;
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .hero-mesh {
+    background:
+      radial-gradient(60% 50% at 20% 30%, rgba(0, 229, 255, 0.18), transparent 60%),
+      radial-gradient(50% 50% at 80% 20%, rgba(232, 199, 126, 0.18), transparent 60%),
+      radial-gradient(60% 50% at 50% 90%, rgba(124, 58, 237, 0.18), transparent 60%);
+    filter: blur(40px);
+  }
+  .text-balance {
+    text-wrap: balance;
   }
 }
