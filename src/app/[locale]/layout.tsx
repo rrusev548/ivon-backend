@@ -2,6 +2,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Inter, Fraunces } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import { locales, type Locale } from '@/lib/i18n';
 import { prisma } from '@/lib/db';
 import { pick } from '@/lib/locale';
@@ -66,6 +67,7 @@ export default async function LocaleLayout({
             />
           )}
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );
