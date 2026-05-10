@@ -8,8 +8,8 @@
     "register": "Registrieren"
   },
   "home": {
-    "eyebrow": "Premium-Training · KI und Social Media",
-    "heroTitle": "Expert-Niveau. Wiederholbare Ergebnisse.",
+    "eyebrow": "Digital Academy · KI & Social Media",
+    "heroTitle": "Beherrsche KI. Liefere Ergebnisse.",
     "heroSubtitle": "Drei Programme, gebaut auf echten Prinzipien — kein Hype, keine billigen Tricks. Nur was langfristig trägt.",
     "heroPrimaryCta": "Kurse ansehen",
     "heroSecondaryCta": "Über uns",
@@ -33,7 +33,13 @@
     "buy": "Anmelden",
     "from": "Ab",
     "longDescTitle": "Über das Programm",
+    "curriculumTitle": "Was du lernst",
+    "curriculumSubtitle": "Detaillierte Modul-Übersicht",
+    "faqTitle": "Häufig gestellte Fragen",
+    "guaranteeTitle": "30 Tage Geld-zurück-Garantie",
+    "guaranteeBody": "Falls der Kurs nicht passt, schreib uns innerhalb von 30 Tagen. Volle Rückerstattung — keine Fragen, keine Reibung.",
     "buyCta": "Diese Woche mit 15 % Rabatt anmelden",
+    "stickyCta": "Anmelden",
     "secureNote": "Sichere Zahlung über Stripe · Karten, Apple Pay, Google Pay, PayPal, Klarna, SEPA und mehr."
   },
   "about": {
@@ -79,13 +85,27 @@
     "emailPlaceholder": "Deine E-Mail (optional)"
   },
   "footer": {
-    "tagline": "Drei Stufen. Eine klare Trajektorie zu einem nachhaltigen Geschäft.",
+    "tagline": "Digital Academy · KI & Social Media. Drei Stufen, eine klare Trajektorie.",
     "rights": "Alle Rechte vorbehalten.",
-    "language": "Sprache"
+    "language": "Sprache",
+    "privacy": "Datenschutz",
+    "terms": "AGB"
   },
   "social": {
     "instagram": "Instagram",
     "tiktok": "TikTok"
+  },
+  "legal": {
+    "privacyTitle": "Datenschutzerklärung",
+    "privacyUpdated": "Letzte Aktualisierung",
+    "termsTitle": "Allgemeine Geschäftsbedingungen",
+    "termsUpdated": "Letzte Aktualisierung"
+  },
+  "cookie": {
+    "title": "Wir verwenden Cookies",
+    "body": "Notwendige Cookies für die Website und optionale Analyse. Du entscheidest.",
+    "accept": "Akzeptieren",
+    "decline": "Ablehnen"
   },
   "admin": {
     "loginTitle": "Admin-Login",

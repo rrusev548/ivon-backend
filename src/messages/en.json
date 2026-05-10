@@ -8,17 +8,17 @@
     "register": "Sign up"
   },
   "home": {
-    "eyebrow": "Premium training · AI and social media",
-    "heroTitle": "Expert level. Repeatable results.",
-    "heroSubtitle": "Three programs built on real principles — no hype, no fake hacks. Only what holds up over time.",
-    "heroPrimaryCta": "See the courses",
+    "eyebrow": "Digital Academy · AI and Social",
+    "heroTitle": "Master AI. Ship results.",
+    "heroSubtitle": "Three programs built on real principles — no hype, no fake hacks. Only what works long-term.",
+    "heroPrimaryCta": "Explore courses",
     "heroSecondaryCta": "About us",
     "trustEyebrow": "Proof",
     "credentialsTitle": "Why people trust us",
     "coursesEyebrow": "The program",
     "coursesTitle": "Three levels. One clear trajectory.",
     "coursesSubtitle": "Start with foundations, add a system, scale a business.",
-    "viewCourse": "View the course",
+    "viewCourse": "View course",
     "testimonialsEyebrow": "Testimonials",
     "testimonialsTitle": "What students say",
     "aboutEyebrow": "Who we are",
@@ -30,10 +30,16 @@
     "title": "Courses",
     "subtitle": "We build expertise systematically — one level at a time.",
     "level": "Level {level}",
-    "buy": "Enrol",
+    "buy": "Enroll",
     "from": "From",
     "longDescTitle": "About the program",
-    "buyCta": "Enrol with 15% off this week",
+    "curriculumTitle": "What you'll learn",
+    "curriculumSubtitle": "Detailed module breakdown",
+    "faqTitle": "Frequently asked questions",
+    "guaranteeTitle": "30-day money-back guarantee",
+    "guaranteeBody": "If the course isn't a fit, write to us within 30 days. Full refund — no questions, no friction.",
+    "buyCta": "Enroll with 15% off this week",
+    "stickyCta": "Enroll now",
     "secureNote": "Secure checkout via Stripe · cards, Apple Pay, Google Pay, PayPal, Klarna, SEPA and more."
   },
   "about": {
@@ -79,13 +85,27 @@
     "emailPlaceholder": "Your email (optional)"
   },
   "footer": {
-    "tagline": "Three levels. One clear trajectory to a sustainable business.",
+    "tagline": "Digital Academy · AI and social media. Three levels, one clear trajectory.",
     "rights": "All rights reserved.",
-    "language": "Language"
+    "language": "Language",
+    "privacy": "Privacy",
+    "terms": "Terms"
   },
   "social": {
     "instagram": "Instagram",
     "tiktok": "TikTok"
+  },
+  "legal": {
+    "privacyTitle": "Privacy policy",
+    "privacyUpdated": "Last updated",
+    "termsTitle": "Terms of service",
+    "termsUpdated": "Last updated"
+  },
+  "cookie": {
+    "title": "We use cookies",
+    "body": "Essential cookies for the site to work, plus optional analytics. You decide.",
+    "accept": "Accept",
+    "decline": "Decline"
   },
   "admin": {
     "loginTitle": "Admin sign in",
