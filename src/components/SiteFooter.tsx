@@ -1,3 +1,5 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import LocaleSwitcher from './LocaleSwitcher';
 import { aboutConfig } from '@/content/about';
@@ -35,8 +37,27 @@ export default async function SiteFooter({ locale }: { locale: Locale }) {
     <footer className="border-t border-cream-100/10 bg-ink-900/60 backdrop-blur-sm">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-3">
         <div>
-          <div className="serif text-lg font-medium text-cream-50">Ivon</div>
-          <p className="mt-2 max-w-xs text-sm text-cream-100/60">{t('tagline')}</p>
+          <div className="flex items-center gap-2.5">
+            <Image
+              src="/logo.jpg"
+              alt="Digital S Team"
+              width={32}
+              height={32}
+              className="h-8 w-8 rounded-lg object-cover ring-1 ring-gold-300/30"
+            />
+            <span className="text-base font-bold tracking-tight text-cream-50">
+              Digital <span className="text-gold-300">S</span> Team
+            </span>
+          </div>
+          <p className="mt-3 max-w-xs text-sm text-cream-100/60">{t('tagline')}</p>
+          <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-cream-100/50">
+            <Link href={`/${locale}/legal/privacy`} className="transition hover:text-gold-300">
+              {t('privacy')}
+            </Link>
+            <Link href={`/${locale}/legal/terms`} className="transition hover:text-gold-300">
+              {t('terms')}
+            </Link>
+          </div>
         </div>
         <div className="flex gap-4 text-cream-100/70 sm:justify-center">
           <a
@@ -61,7 +82,7 @@ export default async function SiteFooter({ locale }: { locale: Locale }) {
         <div className="flex flex-col items-start gap-3 text-sm text-cream-100/55 sm:items-end">
           <LocaleSwitcher current={locale} />
           <p>
-            © {year} Ivon. {t('rights')}
+            © {year} Digital S Team. {t('rights')}
           </p>
         </div>
       </div>

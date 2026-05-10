@@ -6,32 +6,32 @@ const config: Config = {
     extend: {
       colors: {
         ink: {
-          900: '#0A0E27',
-          800: '#0B1426',
-          700: '#101a36',
-          600: '#152043',
+          900: '#05070F',
+          800: '#0A0E27',
+          700: '#0F1530',
+          600: '#172041',
         },
         gold: {
-          50: '#FBF6E8',
-          100: '#F2E5BD',
-          200: '#EAD49C',
-          300: '#E8C77E',
-          400: '#D4AF5C',
-          500: '#B8923D',
-          600: '#8E6F2A',
+          50: '#EFF6FF',
+          100: '#DBEAFE',
+          200: '#93C5FD',
+          300: '#3B82F6',
+          400: '#2563EB',
+          500: '#1D4ED8',
+          600: '#1E40AF',
         },
         cyan: {
           400: '#22d3ee',
           500: '#00E5FF',
         },
         cream: {
-          50: '#FAF6EE',
-          100: '#F5F0E1',
-          200: '#E7DFC8',
+          50: '#F8FAFC',
+          100: '#E2E8F0',
+          200: '#CBD5E1',
         },
       },
       fontFamily: {
-        serif: ['var(--font-fraunces)', 'ui-serif', 'Georgia', 'serif'],
+        serif: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
         sans: ['var(--font-inter)', 'system-ui', '-apple-system', 'sans-serif'],
       },
       keyframes: {
@@ -44,8 +44,8 @@ const config: Config = {
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         ctaPulse: {
-          '0%, 100%': { boxShadow: '0 0 0 0 rgba(232,199,126,0.45)' },
-          '50%': { boxShadow: '0 0 0 12px rgba(232,199,126,0)' },
+          '0%, 100%': { boxShadow: '0 0 0 0 rgba(59,130,246,0.45)' },
+          '50%': { boxShadow: '0 0 0 12px rgba(59,130,246,0)' },
         },
         slideInUp: {
           '0%': { opacity: '0', transform: 'translateY(40px)' },

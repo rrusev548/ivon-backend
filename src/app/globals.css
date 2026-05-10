@@ -10,8 +10,8 @@
   body {
     @apply bg-ink-900 text-cream-100;
     background-image:
-      radial-gradient(1200px 600px at 80% -10%, rgba(0, 229, 255, 0.07), transparent 60%),
-      radial-gradient(900px 700px at -10% 30%, rgba(232, 199, 126, 0.06), transparent 60%);
+      radial-gradient(1200px 600px at 80% -10%, rgba(59, 130, 246, 0.10), transparent 60%),
+      radial-gradient(900px 700px at -10% 30%, rgba(96, 165, 250, 0.06), transparent 60%);
   }
   ::selection {
     @apply bg-gold-300/30 text-cream-50;
@@ -20,7 +20,7 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-xl bg-gold-300 px-5 py-3 font-medium text-ink-900 shadow-[0_8px_30px_-12px_rgba(232,199,126,0.6)] transition hover:bg-gold-200 hover:shadow-[0_8px_40px_-8px_rgba(232,199,126,0.8)] focus:outline-none focus:ring-2 focus:ring-gold-300/60 focus:ring-offset-2 focus:ring-offset-ink-900;
+    @apply inline-flex items-center justify-center rounded-xl bg-gold-300 px-5 py-3 font-medium text-cream-50 shadow-[0_8px_30px_-12px_rgba(59,130,246,0.7)] transition hover:bg-gold-400 hover:shadow-[0_8px_40px_-8px_rgba(59,130,246,0.9)] focus:outline-none focus:ring-2 focus:ring-gold-300/60 focus:ring-offset-2 focus:ring-offset-ink-900;
   }
   .btn-cta {
     @apply btn-primary animate-ctaPulse;
@@ -41,32 +41,34 @@
     @apply rounded-3xl border border-cream-100/10 bg-white/[0.03] backdrop-blur-xl shadow-[0_30px_80px_-30px_rgba(0,0,0,0.5)];
   }
   .gold-card {
-    @apply card-glass relative overflow-hidden transition duration-500 hover:border-gold-300/40 hover:shadow-[0_30px_80px_-20px_rgba(232,199,126,0.25)];
+    @apply card-glass relative overflow-hidden transition duration-500 hover:border-gold-300/40 hover:shadow-[0_30px_80px_-20px_rgba(59,130,246,0.30)];
   }
   .gold-card::before {
     content: '';
     @apply pointer-events-none absolute inset-0 opacity-0 transition duration-500;
-    background: radial-gradient(600px 200px at 50% -10%, rgba(232, 199, 126, 0.18), transparent 60%);
+    background: radial-gradient(600px 200px at 50% -10%, rgba(59, 130, 246, 0.22), transparent 60%);
   }
   .gold-card:hover::before {
     @apply opacity-100;
   }
   .serif {
-    font-family: var(--font-fraunces), ui-serif, Georgia, serif;
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
   }
   .heading-xl {
-    @apply serif text-balance text-4xl font-medium tracking-tight text-cream-50 sm:text-5xl md:text-6xl;
-    letter-spacing: -0.02em;
+    @apply serif text-balance text-4xl font-bold tracking-tight text-cream-50 sm:text-5xl md:text-6xl;
+    letter-spacing: -0.025em;
   }
   .heading-lg {
-    @apply serif text-balance text-3xl font-medium tracking-tight text-cream-50 sm:text-4xl;
-    letter-spacing: -0.015em;
+    @apply serif text-balance text-3xl font-bold tracking-tight text-cream-50 sm:text-4xl;
+    letter-spacing: -0.02em;
   }
   .heading-md {
-    @apply serif text-balance text-2xl font-medium tracking-tight text-cream-50;
+    @apply serif text-balance text-2xl font-semibold tracking-tight text-cream-50;
+    letter-spacing: -0.015em;
   }
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-gold-300/80;
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.20em] text-gold-300;
   }
   .divider-gold {
     @apply h-px w-12 bg-gradient-to-r from-gold-300 to-transparent;
@@ -85,9 +87,9 @@
 @layer utilities {
   .hero-mesh {
     background:
-      radial-gradient(60% 50% at 20% 30%, rgba(0, 229, 255, 0.18), transparent 60%),
-      radial-gradient(50% 50% at 80% 20%, rgba(232, 199, 126, 0.18), transparent 60%),
-      radial-gradient(60% 50% at 50% 90%, rgba(124, 58, 237, 0.18), transparent 60%);
+      radial-gradient(60% 50% at 20% 30%, rgba(96, 165, 250, 0.22), transparent 60%),
+      radial-gradient(50% 50% at 80% 20%, rgba(59, 130, 246, 0.22), transparent 60%),
+      radial-gradient(60% 50% at 50% 90%, rgba(29, 78, 216, 0.20), transparent 60%);
     filter: blur(40px);
   }
   .text-balance {

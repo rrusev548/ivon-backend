@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
@@ -26,10 +27,17 @@ export default function SiteHeader({ locale, hasSession }: { locale: Locale; has
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4">
         <Link href={`/${locale}`} className="flex items-center gap-2.5">
-          <span className="grid h-9 w-9 place-items-center rounded-xl border border-gold-300/40 bg-ink-900 font-medium text-gold-300">
-            iv
+          <Image
+            src="/logo.jpg"
+            alt="Digital S Team"
+            width={36}
+            height={36}
+            priority
+            className="h-9 w-9 rounded-xl object-cover ring-1 ring-gold-300/30"
+          />
+          <span className="text-lg font-bold tracking-tight text-cream-50">
+            Digital <span className="text-gold-300">S</span> Team
           </span>
-          <span className="serif text-lg font-medium tracking-tight text-cream-50">Ivon</span>
         </Link>
         <nav className="flex items-center gap-7 text-sm">
           <Link

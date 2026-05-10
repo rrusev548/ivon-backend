@@ -1,7 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Inter, Fraunces } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { locales, type Locale } from '@/lib/i18n';
 import { prisma } from '@/lib/db';
 import { pick } from '@/lib/locale';
@@ -9,17 +9,19 @@ import { getCurrentUserId } from '@/lib/userSession';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import OfferPopup from '@/components/OfferPopup';
+import CookieBanner from '@/components/CookieBanner';
+
+export const metadata = {
+  title: 'Digital S Team — AI & Social Media Academy',
+  description:
+    'Three programs built on real principles — no hype, no fake hacks. Master AI and social media systematically.',
+  other: { robots: 'index, follow, noai, noimageai' },
+};
 
 const inter = Inter({
   subsets: ['latin', 'cyrillic'],
   display: 'swap',
   variable: '--font-inter',
-});
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-fraunces',
-  axes: ['SOFT', 'opsz'],
 });
 
 export const dynamic = 'force-dynamic';
@@ -40,14 +42,15 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const messages = await getMessages();
 
-  const [popupCfg, t, userId] = await Promise.all([
+  const [popupCfg, t, ct, userId] = await Promise.all([
     prisma.popupConfig.findUnique({ where: { id: 'singleton' } }),
     getTranslations('popup'),
+    getTranslations('cookie'),
     getCurrentUserId(),
   ]);
 
   return (
-    <html lang={locale} className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang={locale} className={inter.variable}>
       <body className="flex min-h-screen flex-col">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <SiteHeader locale={locale as Locale} hasSession={Boolean(userId)} />
@@ -65,6 +68,12 @@ export default async function LocaleLayout({
               closeLabel={t('close')}
             />
           )}
+          <CookieBanner
+            title={ct('title')}
+            body={ct('body')}
+            acceptLabel={ct('accept')}
+            declineLabel={ct('decline')}
+          />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -37,6 +37,7 @@ export default function OfferPopup({
 }) {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState('');
+  const [honeypot, setHoneypot] = useState('');
 
   useEffect(() => {
     if (isDismissed()) return;
@@ -57,7 +58,7 @@ export default function OfferPopup({
         await fetch('/api/popup/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, locale }),
+          body: JSON.stringify({ email, locale, website: honeypot }),
         });
       } catch {
         /* swallow */
@@ -95,6 +96,16 @@ export default function OfferPopup({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="input flex-1"
+          />
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={honeypot}
+            onChange={(e) => setHoneypot(e.target.value)}
+            aria-hidden="true"
+            className="hidden"
           />
           <Link href={ctaUrl} onClick={submit} className="btn-primary whitespace-nowrap">
             {ctaLabel}
