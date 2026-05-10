@@ -237,14 +237,15 @@ async function main() {
     console.log(`Course: ${c.slug}`);
   }
 
-  await prisma.affiliateLink.deleteMany();
-  for (const a of affiliates) await prisma.affiliateLink.create({ data: a });
-
-  await prisma.testimonial.deleteMany();
-  for (const t of testimonials) await prisma.testimonial.create({ data: t });
-
-  await prisma.credential.deleteMany();
-  for (const cr of credentials) await prisma.credential.create({ data: cr });
+  if ((await prisma.affiliateLink.count()) === 0) {
+    for (const a of affiliates) await prisma.affiliateLink.create({ data: a });
+  }
+  if ((await prisma.testimonial.count()) === 0) {
+    for (const t of testimonials) await prisma.testimonial.create({ data: t });
+  }
+  if ((await prisma.credential.count()) === 0) {
+    for (const cr of credentials) await prisma.credential.create({ data: cr });
+  }
 
   await prisma.popupConfig.upsert({
     where: { id: 'singleton' },
