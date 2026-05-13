@@ -38,9 +38,23 @@
     "faqTitle": "Häufig gestellte Fragen",
     "guaranteeTitle": "30 Tage Geld-zurück-Garantie",
     "guaranteeBody": "Falls der Kurs nicht passt, schreib uns innerhalb von 30 Tagen. Volle Rückerstattung — keine Fragen, keine Reibung.",
-    "buyCta": "Diese Woche mit 15 % Rabatt anmelden",
+    "buyCta": "Jetzt anmelden",
     "stickyCta": "Anmelden",
-    "secureNote": "Sichere Zahlung über Stripe · Karten, Apple Pay, Google Pay, PayPal, Klarna, SEPA und mehr."
+    "comingSoon": "Demnächst"
+  },
+  "redeem": {
+    "title": "Kurs freischalten",
+    "subtitle": "Gib den Code ein, den du nach dem Kauf erhalten hast, um den Kurs in deinem Konto freizuschalten.",
+    "codeLabel": "Zugangscode",
+    "submit": "Freischalten",
+    "loading": "Wird freigeschaltet…",
+    "success": "Fertig! Der Kurs wurde deinem Konto hinzugefügt.",
+    "invalid": "Ungültiger Code.",
+    "alreadyUsed": "Dieser Code wurde bereits verwendet.",
+    "needAuth": "Bitte zuerst anmelden oder registrieren.",
+    "limited": "Zu viele Versuche. Bitte später erneut.",
+    "error": "Etwas ist schiefgelaufen. Bitte erneut versuchen.",
+    "haveCode": "Hast du einen Zugangscode?"
   },
   "about": {
     "eyebrow": "Über uns",
