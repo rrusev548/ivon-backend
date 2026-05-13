@@ -1,0 +1,7 @@
+[build]
+  command = "prisma generate && prisma db push --skip-generate && next build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  PRISMA_GENERATE_DATAPROXY = "false"
