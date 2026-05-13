@@ -75,6 +75,23 @@
     "downloadResources": "Materialien",
     "open": "Öffnen"
   },
+  "verifyEmail": {
+    "title": "E-Mail-Bestätigung",
+    "checkInbox": "Wir haben dir einen Bestätigungslink gesendet. Bitte prüfe dein Postfach.",
+    "verifying": "Wird überprüft…",
+    "success": "Deine E-Mail wurde bestätigt. Danke!",
+    "expired": "Dieser Link ist abgelaufen. Fordere im Konto einen neuen an.",
+    "invalid": "Ungültiger Bestätigungslink.",
+    "error": "Etwas ist schiefgelaufen. Bitte erneut versuchen.",
+    "goToAccount": "Zum Konto",
+    "resendFromAccount": "Neuen Link im Konto anfordern",
+    "bannerTitle": "Bestätige deine E-Mail-Adresse",
+    "bannerBody": "Wir haben einen Bestätigungslink an {email} gesendet.",
+    "resend": "Erneut senden",
+    "sending": "Wird gesendet…",
+    "sent": "Gesendet",
+    "limited": "Bitte später erneut versuchen."
+  },
   "checkout": {
     "successTitle": "Danke für deinen Kauf!",
     "successBody": "Der Kurs wurde deinem Konto hinzugefügt. Du kannst ihn jederzeit öffnen.",
