@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { prisma } from '@/lib/db';
@@ -29,6 +30,8 @@ export default async function CourseDetailPage({
   ).format(course.priceCents / 100);
 
   const longDesc = pick(course, 'longDesc', locale);
+  const linktreeUrl = process.env.LINKTREE_URL?.trim() || null;
+  const rt = await getTranslations('redeem');
 
   return (
     <>
@@ -47,9 +50,17 @@ export default async function CourseDetailPage({
               <div className="text-xs uppercase tracking-wider text-cream-100/55">{t('from')}</div>
               <div className="mt-1 text-4xl font-bold text-gold-300">{fmt}</div>
             </div>
-            <BuyButton courseId={course.id} label={t('buyCta')} />
+            <BuyButton
+              label={t('buyCta')}
+              href={linktreeUrl}
+              comingSoonLabel={t('comingSoon')}
+            />
           </div>
-          <p className="mt-3 text-xs text-cream-100/50">{t('secureNote')}</p>
+          <p className="mt-3 text-xs text-cream-100/50">
+            <Link href={`/${locale}/redeem`} className="text-gold-300 hover:underline">
+              {rt('haveCode')}
+            </Link>
+          </p>
         </Reveal>
 
         <Reveal delay={200}>
@@ -78,7 +89,7 @@ export default async function CourseDetailPage({
           </div>
         </Reveal>
       </section>
-      <StickyMobileCta courseId={course.id} label={t('stickyCta')} price={fmt} />
+      <StickyMobileCta label={t('stickyCta')} price={fmt} href={linktreeUrl} />
     </>
   );
 }

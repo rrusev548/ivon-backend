@@ -51,6 +51,7 @@ model Course {
   updatedAt   DateTime     @updatedAt
   resources   Resource[]
   enrollments Enrollment[]
+  redeemCodes RedeemCode[]
 }
 
 model Resource {
@@ -81,6 +82,18 @@ model Enrollment {
   createdAt   DateTime @default(now())
 
   @@unique([userId, courseId])
+  @@index([courseId])
+}
+
+model RedeemCode {
+  id           String    @id @default(cuid())
+  code         String    @unique
+  courseId     String
+  course       Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  usedByUserId String?
+  usedAt       DateTime?
+  createdAt    DateTime  @default(now())
+
   @@index([courseId])
 }
 
