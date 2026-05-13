@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import type Stripe from 'stripe';
 import { prisma } from '@/lib/db';
 import { stripe, stripeWebhookSecret } from '@/lib/stripe';
+import { sendReceiptEmail, type Locale } from '@/lib/email';
+import { pick } from '@/lib/locale';
 
 export const runtime = 'nodejs';
 
@@ -37,8 +39,43 @@ export async function POST(req: Request) {
           currency: (session.currency ?? 'eur').toUpperCase(),
         },
       });
+
+      try {
+        const [user, course] = await Promise.all([
+          prisma.user.findUnique({ where: { id: userId } }),
+          prisma.course.findUnique({ where: { id: courseId } }),
+        ]);
+        if (user && course) {
+          const locale = inferLocale(session);
+          const amount = formatAmount(session.amount_total ?? 0, session.currency ?? 'eur');
+          await sendReceiptEmail({
+            to: user.email,
+            courseTitle: pick(course, 'title', locale),
+            amount,
+            locale,
+          });
+        }
+      } catch (err) {
+        console.error('[stripe-webhook] receipt email failed:', err);
+      }
     }
   }
 
   return NextResponse.json({ received: true });
+}
+
+function inferLocale(session: Stripe.Checkout.Session): Locale {
+  const raw = session.locale ?? '';
+  if (raw.startsWith('bg')) return 'bg';
+  if (raw.startsWith('de')) return 'de';
+  return 'en';
+}
+
+function formatAmount(cents: number, currency: string): string {
+  const amount = cents / 100;
+  try {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: currency.toUpperCase() }).format(amount);
+  } catch {
+    return `${amount.toFixed(2)} ${currency.toUpperCase()}`;
+  }
 }

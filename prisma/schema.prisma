@@ -15,14 +15,17 @@ model AdminUser {
 }
 
 model User {
-  id           String       @id @default(cuid())
-  email        String       @unique
-  passwordHash String
-  nameBg       String?
-  nameEn       String?
-  nameDe       String?
-  createdAt    DateTime     @default(now())
-  enrollments  Enrollment[]
+  id                         String       @id @default(cuid())
+  email                      String       @unique
+  passwordHash               String
+  nameBg                     String?
+  nameEn                     String?
+  nameDe                     String?
+  emailVerifiedAt            DateTime?
+  verificationToken          String?      @unique
+  verificationTokenExpiresAt DateTime?
+  createdAt                  DateTime     @default(now())
+  enrollments                Enrollment[]
 }
 
 model Course {

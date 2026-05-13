@@ -75,6 +75,23 @@
     "downloadResources": "Resources",
     "open": "Open"
   },
+  "verifyEmail": {
+    "title": "Email verification",
+    "checkInbox": "We've sent you a verification link. Check your inbox.",
+    "verifying": "Verifying…",
+    "success": "Your email has been verified. Thanks!",
+    "expired": "This link has expired. Request a new one from your account.",
+    "invalid": "Invalid verification link.",
+    "error": "Something went wrong. Please try again.",
+    "goToAccount": "Go to my account",
+    "resendFromAccount": "Request a new link from your account",
+    "bannerTitle": "Verify your email address",
+    "bannerBody": "We sent a verification link to {email}.",
+    "resend": "Resend",
+    "sending": "Sending…",
+    "sent": "Sent",
+    "limited": "Try again later."
+  },
   "checkout": {
     "successTitle": "Thanks for your purchase!",
     "successBody": "The course has been added to your account. You can open it any time.",
