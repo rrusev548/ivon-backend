@@ -1,0 +1,9 @@
+{
+  "name": "Ghost Chat",
+  "short_name": "Ghost",
+  "start_url": "/ghost-chat",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#c8ff00",
+  "icons": []
+}
