@@ -1148,6 +1148,21 @@
     return out;
   };
 
+  // STUN + free OpenRelay TURN (Metered.ca) — needed for users behind symmetric/CGNAT firewalls
+  const PEER_CONFIG = {
+    debug: 1,
+    config: {
+      iceServers: [
+        { urls: 'stun:stun.l.google.com:19302' },
+        { urls: 'stun:stun1.l.google.com:19302' },
+        { urls: 'stun:openrelay.metered.ca:80' },
+        { urls: 'turn:openrelay.metered.ca:80',            username: 'openrelayproject', credential: 'openrelayproject' },
+        { urls: 'turn:openrelay.metered.ca:443',           username: 'openrelayproject', credential: 'openrelayproject' },
+        { urls: 'turn:openrelay.metered.ca:443?transport=tcp', username: 'openrelayproject', credential: 'openrelayproject' },
+      ]
+    }
+  };
+
   const initiatePeer = (onOpen) => {
     if (state.peer && !state.peer.destroyed) {
       if (onOpen) onOpen();
@@ -1155,7 +1170,7 @@
     }
     setConnStatus('establishing ghost tunnel...', { pulse: true });
     try {
-      state.peer = new Peer(peerIdFor(state.ghostId), { debug: 1 });
+      state.peer = new Peer(peerIdFor(state.ghostId), PEER_CONFIG);
     } catch (e) {
       ERR('peer init', e);
       showConnError('Could not reach signaling — try refresh');
@@ -1170,11 +1185,17 @@
       LOG('incoming connection from', conn.peer);
       attachConnection(conn, false);
     });
+    // Auto-reconnect to signaling on transient blip (handshake server only — does not affect active P2P data conn)
+    state.peer.on('disconnected', () => {
+      LOG('peer disconnected from signaling, attempting reconnect...');
+      setConnStatus('reconnecting to signaling...', { pulse: true });
+      try { state.peer.reconnect(); } catch (e) { WARN('reconnect failed', e); }
+    });
     state.peer.on('error', (err) => {
       ERR('peer error', err.type, err.message);
       if (err.type === 'unavailable-id') showConnError('That Ghost ID is in use — reroll.');
       else if (err.type === 'peer-unavailable') { showConnError('That ghost is not online.'); setConnStatus('not found', { pulse: false }); }
-      else if (['network','server-error','socket-error'].includes(err.type)) showConnError('Could not reach signaling — try refresh');
+      else if (['network','server-error','socket-error'].includes(err.type)) showConnError('Signaling unreachable — will retry · try refresh if persists');
       else showConnError(err.message || 'Connection error');
     });
   };
