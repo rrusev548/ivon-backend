@@ -18,6 +18,7 @@ async function bootstrapAdmin() {
 const NAV: Array<[string, string]> = [
   ['/admin', 'Dashboard'],
   ['/admin/courses', 'Courses'],
+  ['/admin/codes', 'Redeem codes'],
   ['/admin/popup', 'Popup'],
   ['/admin/affiliates', 'Affiliates'],
   ['/admin/testimonials', 'Testimonials'],

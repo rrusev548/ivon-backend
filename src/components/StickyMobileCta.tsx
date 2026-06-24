@@ -3,13 +3,12 @@
 import { useEffect, useState } from 'react';
 
 type Props = {
-  courseId: string;
   label: string;
   price: string;
+  href: string | null;
 };
 
-export default function StickyMobileCta({ courseId, label, price }: Props) {
-  const [loading, setLoading] = useState(false);
+export default function StickyMobileCta({ label, price, href }: Props) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -19,22 +18,7 @@ export default function StickyMobileCta({ courseId, label, price }: Props) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const onClick = async () => {
-    setLoading(true);
-    try {
-      const res = await fetch('/api/checkout/stripe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ courseId }),
-      });
-      const data = await res.json();
-      if (res.ok && data.url) {
-        window.location.href = data.url;
-        return;
-      }
-    } catch {}
-    setLoading(false);
-  };
+  if (!href) return null;
 
   return (
     <div
@@ -47,14 +31,14 @@ export default function StickyMobileCta({ courseId, label, price }: Props) {
         <div>
           <div className="text-xs uppercase tracking-wider text-cream-100/55">{price}</div>
         </div>
-        <button
-          type="button"
-          onClick={onClick}
-          disabled={loading}
-          className="btn-primary flex-1 max-w-[60%]"
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-primary flex-1 max-w-[60%] text-center"
         >
-          {loading ? '…' : label}
-        </button>
+          {label}
+        </a>
       </div>
     </div>
   );

@@ -16,14 +16,17 @@ model AdminUser {
 }
 
 model User {
-  id           String       @id @default(cuid())
-  email        String       @unique
-  passwordHash String
-  nameBg       String?
-  nameEn       String?
-  nameDe       String?
-  createdAt    DateTime     @default(now())
-  enrollments  Enrollment[]
+  id                         String       @id @default(cuid())
+  email                      String       @unique
+  passwordHash               String
+  nameBg                     String?
+  nameEn                     String?
+  nameDe                     String?
+  emailVerifiedAt            DateTime?
+  verificationToken          String?      @unique
+  verificationTokenExpiresAt DateTime?
+  createdAt                  DateTime     @default(now())
+  enrollments                Enrollment[]
 }
 
 model Course {
@@ -49,6 +52,7 @@ model Course {
   updatedAt   DateTime     @updatedAt
   resources   Resource[]
   enrollments Enrollment[]
+  redeemCodes RedeemCode[]
 }
 
 model Resource {
@@ -79,6 +83,18 @@ model Enrollment {
   createdAt   DateTime @default(now())
 
   @@unique([userId, courseId])
+  @@index([courseId])
+}
+
+model RedeemCode {
+  id           String    @id @default(cuid())
+  code         String    @unique
+  courseId     String
+  course       Course    @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  usedByUserId String?
+  usedAt       DateTime?
+  createdAt    DateTime  @default(now())
+
   @@index([courseId])
 }
 

@@ -6,6 +6,7 @@ import { pick } from '@/lib/locale';
 import { getCurrentUserId } from '@/lib/userSession';
 import type { Locale } from '@/lib/i18n';
 import LogoutButton from './LogoutButton';
+import VerifyBanner from './VerifyBanner';
 
 export default async function AccountPage({
   params,
@@ -18,6 +19,11 @@ export default async function AccountPage({
 
   const t = await getTranslations('account');
   const at = await getTranslations('auth');
+
+  const me = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { email: true, emailVerifiedAt: true },
+  });
 
   const enrollments = await prisma.enrollment.findMany({
     where: { userId },
@@ -35,6 +41,8 @@ export default async function AccountPage({
         <h1 className="heading-xl">{t('title')}</h1>
         <LogoutButton locale={locale} label={at('logout')} />
       </div>
+
+      {me && !me.emailVerifiedAt && <VerifyBanner email={me.email} locale={locale} />}
 
       <h2 className="heading-md mt-12">{t('myCourses')}</h2>
       <div className="divider-gold mt-3" />

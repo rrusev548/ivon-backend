@@ -38,9 +38,23 @@
     "faqTitle": "Häufig gestellte Fragen",
     "guaranteeTitle": "30 Tage Geld-zurück-Garantie",
     "guaranteeBody": "Falls der Kurs nicht passt, schreib uns innerhalb von 30 Tagen. Volle Rückerstattung — keine Fragen, keine Reibung.",
-    "buyCta": "Diese Woche mit 15 % Rabatt anmelden",
+    "buyCta": "Jetzt anmelden",
     "stickyCta": "Anmelden",
-    "secureNote": "Sichere Zahlung über Stripe · Karten, Apple Pay, Google Pay, PayPal, Klarna, SEPA und mehr."
+    "comingSoon": "Demnächst"
+  },
+  "redeem": {
+    "title": "Kurs freischalten",
+    "subtitle": "Gib den Code ein, den du nach dem Kauf erhalten hast, um den Kurs in deinem Konto freizuschalten.",
+    "codeLabel": "Zugangscode",
+    "submit": "Freischalten",
+    "loading": "Wird freigeschaltet…",
+    "success": "Fertig! Der Kurs wurde deinem Konto hinzugefügt.",
+    "invalid": "Ungültiger Code.",
+    "alreadyUsed": "Dieser Code wurde bereits verwendet.",
+    "needAuth": "Bitte zuerst anmelden oder registrieren.",
+    "limited": "Zu viele Versuche. Bitte später erneut.",
+    "error": "Etwas ist schiefgelaufen. Bitte erneut versuchen.",
+    "haveCode": "Hast du einen Zugangscode?"
   },
   "about": {
     "eyebrow": "Über uns",
@@ -74,6 +88,23 @@
     "browseCourses": "Kurse ansehen",
     "downloadResources": "Materialien",
     "open": "Öffnen"
+  },
+  "verifyEmail": {
+    "title": "E-Mail-Bestätigung",
+    "checkInbox": "Wir haben dir einen Bestätigungslink gesendet. Bitte prüfe dein Postfach.",
+    "verifying": "Wird überprüft…",
+    "success": "Deine E-Mail wurde bestätigt. Danke!",
+    "expired": "Dieser Link ist abgelaufen. Fordere im Konto einen neuen an.",
+    "invalid": "Ungültiger Bestätigungslink.",
+    "error": "Etwas ist schiefgelaufen. Bitte erneut versuchen.",
+    "goToAccount": "Zum Konto",
+    "resendFromAccount": "Neuen Link im Konto anfordern",
+    "bannerTitle": "Bestätige deine E-Mail-Adresse",
+    "bannerBody": "Wir haben einen Bestätigungslink an {email} gesendet.",
+    "resend": "Erneut senden",
+    "sending": "Wird gesendet…",
+    "sent": "Gesendet",
+    "limited": "Bitte später erneut versuchen."
   },
   "checkout": {
     "successTitle": "Danke für deinen Kauf!",

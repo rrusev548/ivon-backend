@@ -38,9 +38,23 @@
     "faqTitle": "Frequently asked questions",
     "guaranteeTitle": "30-day money-back guarantee",
     "guaranteeBody": "If the course isn't a fit, write to us within 30 days. Full refund — no questions, no friction.",
-    "buyCta": "Enroll with 15% off this week",
-    "stickyCta": "Enroll now",
-    "secureNote": "Secure checkout via Stripe · cards, Apple Pay, Google Pay, PayPal, Klarna, SEPA and more."
+    "buyCta": "Enrol now",
+    "stickyCta": "Enrol now",
+    "comingSoon": "Coming soon"
+  },
+  "redeem": {
+    "title": "Unlock your course",
+    "subtitle": "Enter the code you received after purchase to add the course to your account.",
+    "codeLabel": "Access code",
+    "submit": "Unlock",
+    "loading": "Unlocking…",
+    "success": "Done! The course has been added to your account.",
+    "invalid": "Invalid code.",
+    "alreadyUsed": "This code has already been used.",
+    "needAuth": "Sign in or register first.",
+    "limited": "Too many attempts. Try again later.",
+    "error": "Something went wrong. Please try again.",
+    "haveCode": "Have an access code?"
   },
   "about": {
     "eyebrow": "About",
@@ -74,6 +88,23 @@
     "browseCourses": "See the courses",
     "downloadResources": "Resources",
     "open": "Open"
+  },
+  "verifyEmail": {
+    "title": "Email verification",
+    "checkInbox": "We've sent you a verification link. Check your inbox.",
+    "verifying": "Verifying…",
+    "success": "Your email has been verified. Thanks!",
+    "expired": "This link has expired. Request a new one from your account.",
+    "invalid": "Invalid verification link.",
+    "error": "Something went wrong. Please try again.",
+    "goToAccount": "Go to my account",
+    "resendFromAccount": "Request a new link from your account",
+    "bannerTitle": "Verify your email address",
+    "bannerBody": "We sent a verification link to {email}.",
+    "resend": "Resend",
+    "sending": "Sending…",
+    "sent": "Sent",
+    "limited": "Try again later."
   },
   "checkout": {
     "successTitle": "Thanks for your purchase!",

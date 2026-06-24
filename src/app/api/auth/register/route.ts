@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { prisma } from '@/lib/db';
 import { getUserSession } from '@/lib/userSession';
 import { getClientIp, rateLimit } from '@/lib/rateLimit';
+import { generateVerificationToken, sendVerificationEmail } from '@/lib/email';
 
 const Body = z.object({
   email: z.string().email(),
@@ -34,22 +35,35 @@ export async function POST(req: Request) {
   const existing = await prisma.user.findUnique({ where: { email } });
   if (existing) return NextResponse.json({ error: 'EMAIL_EXISTS' }, { status: 409 });
   const passwordHash = await bcrypt.hash(password, 10);
+  const { token, expiresAt } = generateVerificationToken();
   const data: {
     email: string;
     passwordHash: string;
     nameBg?: string;
     nameEn?: string;
     nameDe?: string;
-  } = { email, passwordHash };
+    verificationToken: string;
+    verificationTokenExpiresAt: Date;
+  } = {
+    email,
+    passwordHash,
+    verificationToken: token,
+    verificationTokenExpiresAt: expiresAt,
+  };
   if (name) {
     if (locale === 'bg') data.nameBg = name;
     else if (locale === 'de') data.nameDe = name;
     else data.nameEn = name;
   }
   const user = await prisma.user.create({ data });
+  try {
+    await sendVerificationEmail({ to: user.email, token, locale: locale ?? 'en' });
+  } catch (err) {
+    console.error('[register] failed to send verification email:', err);
+  }
   const session = await getUserSession();
   session.userId = user.id;
   session.email = user.email;
   await session.save();
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, verificationRequired: true });
 }
