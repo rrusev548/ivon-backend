@@ -1152,18 +1152,19 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
   .logo-md{width:32px;height:32px}
   .logo-sm{width:24px;height:24px}
   .brand{
-    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:48px;
-    letter-spacing:.16em;
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:56px;
+    letter-spacing:.24em;
     background:var(--gradient);
     -webkit-background-clip:text;background-clip:text;color:transparent;
     text-align:center;line-height:1;
   }
   .brand-badge{
     display:inline-flex;align-items:center;gap:4px;
-    font-size:10px;font-weight:700;letter-spacing:.18em;
-    padding:3px 8px;border-radius:6px;
-    background:var(--violet);color:white;
-    vertical-align:middle;margin-left:6px;
+    font-size:9px;font-weight:600;letter-spacing:.22em;
+    padding:3px 9px;border-radius:6px;
+    background:rgba(124,58,237,0.18);color:rgba(196,181,253,0.85);
+    border:1px solid rgba(124,58,237,0.30);
+    margin-top:8px;
   }
   .tagline{font-family:'Space Grotesk',sans-serif;text-align:center;font-size:15px;line-height:1.4;color:var(--text);margin:4px 0 8px;font-weight:500;padding:0 12px}
   .subtle{text-align:center;font-size:12px;color:var(--muted-2);letter-spacing:.05em}
@@ -1192,13 +1193,13 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
     background:var(--glass);color:var(--text);
     cursor:pointer;transition:transform .15s ease, box-shadow .15s ease;
   }
-  .btn:active{transform:scale(.98)}
+  .btn:active{transform:scale(.96);transition:transform 80ms ease-out}
   .btn-primary{
-    background:var(--gradient);
+    background:linear-gradient(135deg, #5F2EB6 0%, #078BA4 100%);
     border:none;color:white;
-    box-shadow:var(--shadow-glow);
+    box-shadow:0 4px 16px rgba(124,58,237,0.09);
   }
-  .btn-primary:hover{box-shadow:0 12px 40px rgba(124,58,237,0.32)}
+  .btn-primary:hover{box-shadow:0 6px 20px rgba(124,58,237,0.16)}
   .btn-ghost{background:transparent;border:1px solid var(--border-strong)}
   .btn-link{background:none;border:none;color:var(--muted-2);font-size:12px;text-decoration:underline;cursor:pointer;font-family:'Inter',sans-serif;padding:6px}
 
@@ -1466,7 +1467,7 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
     border:none;color:white;cursor:pointer;display:flex;align-items:center;justify-content:center;
     box-shadow:var(--shadow-glow);
   }
-  .send-btn:active{transform:scale(.94)}
+  .send-btn:active{transform:scale(.92);transition:transform 80ms ease-out}
 
   /* toast */
   .toast-wrap{position:fixed;top:18px;right:14px;left:14px;display:flex;flex-direction:column;gap:8px;z-index:200;pointer-events:none;align-items:flex-end}
@@ -1568,10 +1569,11 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
         <circle cx="19" cy="19" r="2.5" fill="white" opacity="0.9"/>
         <circle cx="29" cy="19" r="2.5" fill="white" opacity="0.9"/>
       </svg>
-      <div class="brand">GHOST<span class="brand-badge">BETA v0.1</span></div>
+      <div class="brand">GHOST</div>
+      <div class="brand-badge">BETA v0.1</div>
     </div>
 
-    <div class="tagline">The first message that proves its own disappearance.</div>
+    <div class="tagline">Messages that vanish the moment they're read.</div>
     <div class="subtle">No servers. No logs. No trace.</div>
 
     <div class="glass panel">
@@ -1596,15 +1598,15 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
 
       <div class="plan-grid">
         <div class="plan-card locked">
-          <div class="plan-name">SPECTER</div>
+          <div class="plan-name">MONTHLY</div>
           <div class="plan-state">SOON</div>
         </div>
         <div class="plan-card locked">
-          <div class="plan-name">PHANTOM</div>
+          <div class="plan-name">QUARTERLY</div>
           <div class="plan-state">SOON</div>
         </div>
         <div class="plan-card locked">
-          <div class="plan-name">ULTRA</div>
+          <div class="plan-name">LIFETIME</div>
           <div class="plan-state">SOON</div>
         </div>
       </div>
@@ -1632,7 +1634,7 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
     </div>
 
     <div class="subtle mt-2" style="line-height:1.5;padding:0 8px">
-      Soft beta · QR is real but no automated subscription yet · DM for free codes
+      Pre-alpha — send me a message if you want a free code 👻
     </div>
   </div>
 
@@ -1646,9 +1648,10 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
     </div>
 
     <div class="id-card">
-      <div class="ghost-id-display" id="ghost-id-display">GH-····</div>
+      <div id="username-display" style="font-family:'Space Grotesk';font-size:28px;font-weight:700;background:linear-gradient(135deg,#7C3AED,#06B6D4);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.02em;margin-bottom:6px">@···</div>
+      <div class="ghost-id-display" id="ghost-id-display" style="font-size:18px;opacity:.65;letter-spacing:.18em">GH-····</div>
       <div class="id-meta">Resets in <b id="countdown">--:--:--</b></div>
-      <div class="id-edit-hint" id="edit-hint">FREE: random A–Z · Upgrade to pick your own from 40 symbols</div>
+      <div class="id-edit-hint" id="edit-hint">Auto-generated username · tap reroll for a new one</div>
     </div>
 
     <div class="free-note">Pool: A–Z, 0–9, #, @, !, ? · 40⁴ = 2,560,000 combos</div>
@@ -1668,7 +1671,7 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
     </div>
 
     <div class="own-id">
-      Your ID: <b id="own-id-label">GH-····</b>
+      You: <b id="own-username-label">@···</b> · <span id="own-id-label" style="opacity:.6;font-size:13px">GH-····</span>
       <button class="copy-btn" id="btn-copy-id">copy</button>
     </div>
 
@@ -4123,6 +4126,7 @@ var qrcode = function() {
   const state = {
     screen: 'onboarding',
     ghostId: null,
+    username: null,
     peerId: null,
     peer: null,
     conn: null,
@@ -4229,14 +4233,14 @@ var qrcode = function() {
   const initParticles = () => {
     const wrap = $('#particles');
     if (!wrap) return;
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 12; i++) {
       const p = document.createElement('div');
       p.className = 'particle';
       p.style.left = Math.random() * 100 + 'vw';
       p.style.top = Math.random() * 100 + 'vh';
-      p.style.animationDuration = (20 + Math.random() * 30) + 's';
+      p.style.animationDuration = (32 + Math.random() * 40) + 's';
       p.style.animationDelay = (-Math.random() * 30) + 's';
-      p.style.opacity = (0.2 + Math.random() * 0.4).toFixed(2);
+      p.style.opacity = (0.10 + Math.random() * 0.15).toFixed(2);
       wrap.appendChild(p);
     }
   };
@@ -4269,6 +4273,31 @@ var qrcode = function() {
     lsSet('ghost_id', state.ghostId);
     lsSet('ghost_id_expiry', String(state.premiumInfo?.expiresAt || todayMidnight()));
     LOG('new ghost id', state.ghostId);
+  };
+
+
+  // ============ USERNAME ============
+  const USER_ADJ = ['Silent','Velvet','Misty','Smoky','Ghostly','Shadow','Hidden','Quiet','Soft','Dim','Faint','Pale','Sleek','Calm','Subtle','Frosted','Hazy','Muted','Phantom','Whisper','Dusky','Cold','Cool','Lone','Wise','Bold','Sharp','Swift','Mute','Veiled','Cloaked','Drifting','Floating','Wandering','Lurking','Roaming','Eerie','Vague','Slow','Distant','Curious','Listless','Echoing','Languid','Drowsy','Sleepy','Numb','Dormant','Frosty','Murky','Nimble','Stealthy','Roving','Wistful','Restless','Forsaken','Faded','Latent','Bashful','Solemn'];
+  const USER_NOUN = ['Fox','Owl','Moth','Heron','Ash','Mist','Ember','Wolf','Crow','Lynx','Stoat','Hare','Reed','Stag','Marten','Otter','Falcon','Pike','Beech','Pine','Yew','Cinder','Smoke','Dusk','Dawn','Frost','Brook','Tide','Glow','Spark','Sigil','Veil','Shroud','Cipher','Rune','Echo','Drift','Whim','Tale','Mote','Cairn','Cove','Glen','Thorn','Briar','Vale','Hush','Glade','Quill','Lantern'];
+
+  const generateUsername = () => {
+    const r = new Uint32Array(3);
+    crypto.getRandomValues(r);
+    const a = USER_ADJ[r[0] % USER_ADJ.length];
+    const n = USER_NOUN[r[1] % USER_NOUN.length];
+    const num = String(r[2] % 100).padStart(2, '0');
+    return a + n + num;
+  };
+
+  const loadOrCreateUsername = () => {
+    const stored = localStorage.getItem('ghost_username');
+    const exp = parseInt(localStorage.getItem('ghost_id_expiry') || '0', 10);
+    if (stored && exp > Date.now() && /^[A-Za-z]+\d{2}$/.test(stored)) {
+      state.username = stored;
+      return;
+    }
+    state.username = generateUsername();
+    lsSet('ghost_username', state.username);
   };
 
   // ---------- REFERRALS ----------
@@ -4368,6 +4397,7 @@ var qrcode = function() {
         return;
       }
       loadOrCreateGhostId();
+      loadOrCreateUsername();
       setScreen('id');
       initIdScreen();
       maybeStartTour();
@@ -4404,9 +4434,10 @@ var qrcode = function() {
   let countdownTimer = null;
   const initIdScreen = () => {
     $('#ghost-id-display').textContent = state.ghostId;
+    $('#username-display').textContent = '@' + (state.username || '···');
     $('#edit-hint').textContent = state.isPremium
       ? 'PRO: tap any 4 symbols below to compose your own ID'
-      : 'FREE: random A–Z · Upgrade to pick your own from 40 symbols';
+      : 'Auto-generated username · tap reroll for a new one';
     renderSymbolGrid();
 
     if (countdownTimer) clearInterval(countdownTimer);
@@ -4423,7 +4454,10 @@ var qrcode = function() {
 
     $('#btn-reroll').onclick = () => {
       localStorage.removeItem('ghost_id');
+      localStorage.removeItem('ghost_username');
       loadOrCreateGhostId();
+      loadOrCreateUsername();
+      $('#username-display').textContent = '@' + state.username;
       $('#ghost-id-display').textContent = state.ghostId;
       pickedSymbols = [];
       renderSymbolGrid();
@@ -4471,6 +4505,7 @@ var qrcode = function() {
   // ---------- CONNECT SCREEN ----------
   const initConnectScreen = () => {
     $('#own-id-label').textContent = state.ghostId;
+    $('#own-username-label').textContent = '@' + (state.username || '···');
     $('#ref-link-value').textContent = `ghostchat.app/r/${state.ghostId}`;
     $('#btn-copy-id').onclick = async () => {
       try { await navigator.clipboard.writeText(state.ghostId); toast('Ghost ID copied'); }
@@ -5187,6 +5222,11 @@ var qrcode = function() {
       <span style="color:#A78BFA">total ${TESTS.length}</span>`;
     console.log('[GHOST-TEST] DONE', { pass, fail, skip, total: TESTS.length });
   };
+
+
+  // Boot — attach to DOM ready (this was missing — caused all buttons to silently do nothing)
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 
 })();
 </script>
