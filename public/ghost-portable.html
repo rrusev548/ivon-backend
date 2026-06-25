@@ -1193,7 +1193,7 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
     background:var(--glass);color:var(--text);
     cursor:pointer;transition:transform .15s ease, box-shadow .15s ease;
   }
-  .btn:active{transform:scale(.98)}
+  .btn:active{transform:scale(.96);transition:transform 80ms ease-out}
   .btn-primary{
     background:linear-gradient(135deg, #5F2EB6 0%, #078BA4 100%);
     border:none;color:white;
@@ -1467,7 +1467,7 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
     border:none;color:white;cursor:pointer;display:flex;align-items:center;justify-content:center;
     box-shadow:var(--shadow-glow);
   }
-  .send-btn:active{transform:scale(.94)}
+  .send-btn:active{transform:scale(.92);transition:transform 80ms ease-out}
 
   /* toast */
   .toast-wrap{position:fixed;top:18px;right:14px;left:14px;display:flex;flex-direction:column;gap:8px;z-index:200;pointer-events:none;align-items:flex-end}
@@ -1648,9 +1648,10 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
     </div>
 
     <div class="id-card">
-      <div class="ghost-id-display" id="ghost-id-display">GH-····</div>
+      <div id="username-display" style="font-family:'Space Grotesk';font-size:28px;font-weight:700;background:linear-gradient(135deg,#7C3AED,#06B6D4);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.02em;margin-bottom:6px">@···</div>
+      <div class="ghost-id-display" id="ghost-id-display" style="font-size:18px;opacity:.65;letter-spacing:.18em">GH-····</div>
       <div class="id-meta">Resets in <b id="countdown">--:--:--</b></div>
-      <div class="id-edit-hint" id="edit-hint">FREE: random A–Z · Upgrade to pick your own from 40 symbols</div>
+      <div class="id-edit-hint" id="edit-hint">Auto-generated username · tap reroll for a new one</div>
     </div>
 
     <div class="free-note">Pool: A–Z, 0–9, #, @, !, ? · 40⁴ = 2,560,000 combos</div>
@@ -1670,7 +1671,7 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
     </div>
 
     <div class="own-id">
-      Your ID: <b id="own-id-label">GH-····</b>
+      You: <b id="own-username-label">@···</b> · <span id="own-id-label" style="opacity:.6;font-size:13px">GH-····</span>
       <button class="copy-btn" id="btn-copy-id">copy</button>
     </div>
 
@@ -4125,6 +4126,7 @@ var qrcode = function() {
   const state = {
     screen: 'onboarding',
     ghostId: null,
+    username: null,
     peerId: null,
     peer: null,
     conn: null,
@@ -4273,6 +4275,31 @@ var qrcode = function() {
     LOG('new ghost id', state.ghostId);
   };
 
+
+  // ============ USERNAME ============
+  const USER_ADJ = ['Silent','Velvet','Misty','Smoky','Ghostly','Shadow','Hidden','Quiet','Soft','Dim','Faint','Pale','Sleek','Calm','Subtle','Frosted','Hazy','Muted','Phantom','Whisper','Dusky','Cold','Cool','Lone','Wise','Bold','Sharp','Swift','Mute','Veiled','Cloaked','Drifting','Floating','Wandering','Lurking','Roaming','Eerie','Vague','Slow','Distant','Curious','Listless','Echoing','Languid','Drowsy','Sleepy','Numb','Dormant','Frosty','Murky','Nimble','Stealthy','Roving','Wistful','Restless','Forsaken','Faded','Latent','Bashful','Solemn'];
+  const USER_NOUN = ['Fox','Owl','Moth','Heron','Ash','Mist','Ember','Wolf','Crow','Lynx','Stoat','Hare','Reed','Stag','Marten','Otter','Falcon','Pike','Beech','Pine','Yew','Cinder','Smoke','Dusk','Dawn','Frost','Brook','Tide','Glow','Spark','Sigil','Veil','Shroud','Cipher','Rune','Echo','Drift','Whim','Tale','Mote','Cairn','Cove','Glen','Thorn','Briar','Vale','Hush','Glade','Quill','Lantern'];
+
+  const generateUsername = () => {
+    const r = new Uint32Array(3);
+    crypto.getRandomValues(r);
+    const a = USER_ADJ[r[0] % USER_ADJ.length];
+    const n = USER_NOUN[r[1] % USER_NOUN.length];
+    const num = String(r[2] % 100).padStart(2, '0');
+    return a + n + num;
+  };
+
+  const loadOrCreateUsername = () => {
+    const stored = localStorage.getItem('ghost_username');
+    const exp = parseInt(localStorage.getItem('ghost_id_expiry') || '0', 10);
+    if (stored && exp > Date.now() && /^[A-Za-z]+\d{2}$/.test(stored)) {
+      state.username = stored;
+      return;
+    }
+    state.username = generateUsername();
+    lsSet('ghost_username', state.username);
+  };
+
   // ---------- REFERRALS ----------
   const initRefs = () => {
     let count = parseInt(localStorage.getItem('ghost_ref_count') || '0', 10);
@@ -4370,6 +4397,7 @@ var qrcode = function() {
         return;
       }
       loadOrCreateGhostId();
+      loadOrCreateUsername();
       setScreen('id');
       initIdScreen();
       maybeStartTour();
@@ -4406,9 +4434,10 @@ var qrcode = function() {
   let countdownTimer = null;
   const initIdScreen = () => {
     $('#ghost-id-display').textContent = state.ghostId;
+    $('#username-display').textContent = '@' + (state.username || '···');
     $('#edit-hint').textContent = state.isPremium
       ? 'PRO: tap any 4 symbols below to compose your own ID'
-      : 'FREE: random A–Z · Upgrade to pick your own from 40 symbols';
+      : 'Auto-generated username · tap reroll for a new one';
     renderSymbolGrid();
 
     if (countdownTimer) clearInterval(countdownTimer);
@@ -4425,7 +4454,10 @@ var qrcode = function() {
 
     $('#btn-reroll').onclick = () => {
       localStorage.removeItem('ghost_id');
+      localStorage.removeItem('ghost_username');
       loadOrCreateGhostId();
+      loadOrCreateUsername();
+      $('#username-display').textContent = '@' + state.username;
       $('#ghost-id-display').textContent = state.ghostId;
       pickedSymbols = [];
       renderSymbolGrid();
@@ -4473,6 +4505,7 @@ var qrcode = function() {
   // ---------- CONNECT SCREEN ----------
   const initConnectScreen = () => {
     $('#own-id-label').textContent = state.ghostId;
+    $('#own-username-label').textContent = '@' + (state.username || '···');
     $('#ref-link-value').textContent = `ghostchat.app/r/${state.ghostId}`;
     $('#btn-copy-id').onclick = async () => {
       try { await navigator.clipboard.writeText(state.ghostId); toast('Ghost ID copied'); }
@@ -5189,6 +5222,11 @@ var qrcode = function() {
       <span style="color:#A78BFA">total ${TESTS.length}</span>`;
     console.log('[GHOST-TEST] DONE', { pass, fail, skip, total: TESTS.length });
   };
+
+
+  // Boot — attach to DOM ready (this was missing — caused all buttons to silently do nothing)
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 
 })();
 </script>
