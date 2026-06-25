@@ -9,13 +9,9 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Force-serve the Ghost Chat static files from public/ regardless of Next.js routing
-[[redirects]]
-  from = "/ghost"
-  to = "/ghost.html"
-  status = 200
-  force = true
-
+# Canonical short URL for the portable demo (the /ghost short alias collides with
+# next-intl middleware which treats unknown roots as locale candidates, so we
+# only ship the /portable one — share /ghost.html directly for the hosted variant).
 [[redirects]]
   from = "/portable"
   to = "/ghost-portable.html"
