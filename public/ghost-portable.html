@@ -1152,18 +1152,19 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
   .logo-md{width:32px;height:32px}
   .logo-sm{width:24px;height:24px}
   .brand{
-    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:48px;
-    letter-spacing:.16em;
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:56px;
+    letter-spacing:.24em;
     background:var(--gradient);
     -webkit-background-clip:text;background-clip:text;color:transparent;
     text-align:center;line-height:1;
   }
   .brand-badge{
     display:inline-flex;align-items:center;gap:4px;
-    font-size:10px;font-weight:700;letter-spacing:.18em;
-    padding:3px 8px;border-radius:6px;
-    background:var(--violet);color:white;
-    vertical-align:middle;margin-left:6px;
+    font-size:9px;font-weight:600;letter-spacing:.22em;
+    padding:3px 9px;border-radius:6px;
+    background:rgba(124,58,237,0.18);color:rgba(196,181,253,0.85);
+    border:1px solid rgba(124,58,237,0.30);
+    margin-top:8px;
   }
   .tagline{font-family:'Space Grotesk',sans-serif;text-align:center;font-size:15px;line-height:1.4;color:var(--text);margin:4px 0 8px;font-weight:500;padding:0 12px}
   .subtle{text-align:center;font-size:12px;color:var(--muted-2);letter-spacing:.05em}
@@ -1194,11 +1195,11 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
   }
   .btn:active{transform:scale(.98)}
   .btn-primary{
-    background:var(--gradient);
+    background:linear-gradient(135deg, #5F2EB6 0%, #078BA4 100%);
     border:none;color:white;
-    box-shadow:var(--shadow-glow);
+    box-shadow:0 4px 16px rgba(124,58,237,0.09);
   }
-  .btn-primary:hover{box-shadow:0 12px 40px rgba(124,58,237,0.32)}
+  .btn-primary:hover{box-shadow:0 6px 20px rgba(124,58,237,0.16)}
   .btn-ghost{background:transparent;border:1px solid var(--border-strong)}
   .btn-link{background:none;border:none;color:var(--muted-2);font-size:12px;text-decoration:underline;cursor:pointer;font-family:'Inter',sans-serif;padding:6px}
 
@@ -1568,10 +1569,11 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
         <circle cx="19" cy="19" r="2.5" fill="white" opacity="0.9"/>
         <circle cx="29" cy="19" r="2.5" fill="white" opacity="0.9"/>
       </svg>
-      <div class="brand">GHOST<span class="brand-badge">BETA v0.1</span></div>
+      <div class="brand">GHOST</div>
+      <div class="brand-badge">BETA v0.1</div>
     </div>
 
-    <div class="tagline">The first message that proves its own disappearance.</div>
+    <div class="tagline">Messages that vanish the moment they're read.</div>
     <div class="subtle">No servers. No logs. No trace.</div>
 
     <div class="glass panel">
@@ -1596,15 +1598,15 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
 
       <div class="plan-grid">
         <div class="plan-card locked">
-          <div class="plan-name">SPECTER</div>
+          <div class="plan-name">MONTHLY</div>
           <div class="plan-state">SOON</div>
         </div>
         <div class="plan-card locked">
-          <div class="plan-name">PHANTOM</div>
+          <div class="plan-name">QUARTERLY</div>
           <div class="plan-state">SOON</div>
         </div>
         <div class="plan-card locked">
-          <div class="plan-name">ULTRA</div>
+          <div class="plan-name">LIFETIME</div>
           <div class="plan-state">SOON</div>
         </div>
       </div>
@@ -1632,7 +1634,7 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
     </div>
 
     <div class="subtle mt-2" style="line-height:1.5;padding:0 8px">
-      Soft beta · QR is real but no automated subscription yet · DM for free codes
+      Pre-alpha — send me a message if you want a free code 👻
     </div>
   </div>
 
@@ -4229,14 +4231,14 @@ var qrcode = function() {
   const initParticles = () => {
     const wrap = $('#particles');
     if (!wrap) return;
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 12; i++) {
       const p = document.createElement('div');
       p.className = 'particle';
       p.style.left = Math.random() * 100 + 'vw';
       p.style.top = Math.random() * 100 + 'vh';
-      p.style.animationDuration = (20 + Math.random() * 30) + 's';
+      p.style.animationDuration = (32 + Math.random() * 40) + 's';
       p.style.animationDelay = (-Math.random() * 30) + 's';
-      p.style.opacity = (0.2 + Math.random() * 0.4).toFixed(2);
+      p.style.opacity = (0.10 + Math.random() * 0.15).toFixed(2);
       wrap.appendChild(p);
     }
   };
