@@ -1206,7 +1206,7 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
   .qr-wrap{display:flex;justify-content:center;margin:12px 0}
   .qr{
     width:200px;height:200px;border-radius:14px;overflow:hidden;
-    background:#1a1a2e;padding:8px;
+    background:#ffffff;padding:8px;
     box-shadow:0 0 0 1px var(--border-strong), 0 12px 40px rgba(0,0,0,0.4);
   }
   .qr img{display:block;width:100%;height:100%}
@@ -2041,7 +2041,7 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
 
   // ---------- QR ----------
   const qrUrl = (data, size = 400) =>
-    `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&margin=2&data=${encodeURIComponent(data)}&bgcolor=1a1a2e&color=ffffff&qzone=2`;
+    `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&margin=2&data=${encodeURIComponent(data)}&qzone=2`;
 
   // ---------- ONBOARDING ----------
   const initOnboarding = () => {
