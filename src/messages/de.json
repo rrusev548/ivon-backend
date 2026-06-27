@@ -8,11 +8,11 @@
     "register": "Registrieren"
   },
   "home": {
-    "eyebrow": "Digital Academy · KI & Social Media",
-    "heroTitle": "Beherrsche KI. Liefere Ergebnisse.",
-    "heroSubtitle": "Drei Programme, gebaut auf echten Prinzipien — kein Hype, keine billigen Tricks. Nur was langfristig trägt.",
-    "heroPrimaryCta": "Kurse ansehen",
-    "heroSecondaryCta": "Über uns",
+    "eyebrow": "KI arbeitet für dich",
+    "heroTitle": "Erschaffe. Automatisiere. Sei voraus.",
+    "heroSubtitle": "Meistere KI und verwandle deine Ideen in Ergebnisse — kein Hype, keine billigen Tricks. Nur was langfristig wirkt.",
+    "heroPrimaryCta": "Jetzt starten",
+    "heroSecondaryCta": "Kurse ansehen",
     "trustEyebrow": "Beweis",
     "credentialsTitle": "Warum man uns vertraut",
     "coursesEyebrow": "Das Programm",
@@ -116,7 +116,7 @@
     "emailPlaceholder": "Deine E-Mail (optional)"
   },
   "footer": {
-    "tagline": "Digital Academy · KI & Social Media. Drei Stufen, eine klare Trajektorie.",
+    "tagline": "AI Playground · KI meistern und Ideen in Ergebnisse verwandeln.",
     "rights": "Alle Rechte vorbehalten.",
     "language": "Sprache",
     "privacy": "Datenschutz",

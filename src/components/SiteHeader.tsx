@@ -27,16 +27,11 @@ export default function SiteHeader({ locale, hasSession }: { locale: Locale; has
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4">
         <Link href={`/${locale}`} className="flex items-center gap-2.5">
-          <Image
-            src="/logo.jpg"
-            alt="Digital S Team"
-            width={36}
-            height={36}
-            priority
-            className="h-9 w-9 rounded-xl object-cover ring-1 ring-gold-300/30"
-          />
-          <span className="text-lg font-bold tracking-tight text-cream-50">
-            Digital <span className="text-gold-300">S</span> Team
+          <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-cyan-500 to-purple-500 text-base font-black text-ink-900 ring-1 ring-cyan-500/40 shadow-lg shadow-cyan-500/30">
+            AI
+          </span>
+          <span className="text-lg font-black tracking-tight text-cream-50">
+            AI <span className="bg-gradient-to-r from-cyan-400 to-lime-400 bg-clip-text text-transparent">Playground</span>
           </span>
         </Link>
         <nav className="flex items-center gap-7 text-sm">
