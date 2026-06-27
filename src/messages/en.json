@@ -8,11 +8,11 @@
     "register": "Sign up"
   },
   "home": {
-    "eyebrow": "Digital Academy · AI and Social",
-    "heroTitle": "Master AI. Ship results.",
-    "heroSubtitle": "Three programs built on real principles — no hype, no fake hacks. Only what works long-term.",
-    "heroPrimaryCta": "Explore courses",
-    "heroSecondaryCta": "About us",
+    "eyebrow": "AI works for you",
+    "heroTitle": "Create. Automate. Get ahead.",
+    "heroSubtitle": "Master AI and turn your ideas into results — no hype, no fake hacks. Only what works long-term.",
+    "heroPrimaryCta": "Start today",
+    "heroSecondaryCta": "Browse courses",
     "trustEyebrow": "Proof",
     "credentialsTitle": "Why people trust us",
     "coursesEyebrow": "The program",
@@ -116,7 +116,7 @@
     "emailPlaceholder": "Your email (optional)"
   },
   "footer": {
-    "tagline": "Digital Academy · AI and social media. Three levels, one clear trajectory.",
+    "tagline": "AI Playground · Master AI and turn ideas into results.",
     "rights": "All rights reserved.",
     "language": "Language",
     "privacy": "Privacy",

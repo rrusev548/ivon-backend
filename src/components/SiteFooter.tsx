@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import LocaleSwitcher from './LocaleSwitcher';
@@ -38,15 +37,11 @@ export default async function SiteFooter({ locale }: { locale: Locale }) {
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-3">
         <div>
           <div className="flex items-center gap-2.5">
-            <Image
-              src="/logo.jpg"
-              alt="Digital S Team"
-              width={32}
-              height={32}
-              className="h-8 w-8 rounded-lg object-cover ring-1 ring-gold-300/30"
-            />
-            <span className="text-base font-bold tracking-tight text-cream-50">
-              Digital <span className="text-gold-300">S</span> Team
+            <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-cyan-500 to-purple-500 text-sm font-black text-ink-900 ring-1 ring-cyan-500/40">
+              AI
+            </span>
+            <span className="text-base font-black tracking-tight text-cream-50">
+              AI <span className="bg-gradient-to-r from-cyan-400 to-lime-400 bg-clip-text text-transparent">Playground</span>
             </span>
           </div>
           <p className="mt-3 max-w-xs text-sm text-cream-100/60">{t('tagline')}</p>
@@ -82,7 +77,7 @@ export default async function SiteFooter({ locale }: { locale: Locale }) {
         <div className="flex flex-col items-start gap-3 text-sm text-cream-100/55 sm:items-end">
           <LocaleSwitcher current={locale} />
           <p>
-            © {year} Digital S Team. {t('rights')}
+            © {year} AI Playground. {t('rights')}
           </p>
         </div>
       </div>

@@ -12,9 +12,9 @@ import OfferPopup from '@/components/OfferPopup';
 import CookieBanner from '@/components/CookieBanner';
 
 export const metadata = {
-  title: 'Digital S Team — AI & Social Media Academy',
+  title: 'AI Playground — Create. Automate. Get ahead.',
   description:
-    'Three programs built on real principles — no hype, no fake hacks. Master AI and social media systematically.',
+    'Master AI and turn your ideas into results. No hype, no fake hacks — only what works long-term.',
   other: { robots: 'index, follow, noai, noimageai' },
 };
 

@@ -29,27 +29,40 @@ export default async function HomePage({
 
   return (
     <>
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden grain">
         <div className="hero-mesh absolute inset-0 -z-10 animate-mesh" aria-hidden="true" />
         <div className="mx-auto max-w-6xl px-4 pt-20 pb-24 sm:pt-28 sm:pb-32">
           <Reveal>
-            <span className="eyebrow">— {t('eyebrow')}</span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/5 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">
+              ♛ {t('eyebrow')}
+            </span>
           </Reveal>
           <Reveal delay={120}>
-            <h1 className="heading-xl mt-5 max-w-4xl">{t('heroTitle')}</h1>
+            <h1 className="heading-xl mt-6 max-w-4xl">
+              <span className="text-gradient-brand">{t('heroTitle')}</span>
+            </h1>
           </Reveal>
           <Reveal delay={220}>
-            <p className="mt-6 max-w-2xl text-lg text-cream-100/75">{t('heroSubtitle')}</p>
+            <p className="mt-6 max-w-2xl text-lg text-cream-100/80">{t('heroSubtitle')}</p>
           </Reveal>
           <Reveal delay={320}>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link href={`/${locale}/courses`} className="btn-primary">
-                {t('heroPrimaryCta')}
+                {t('heroPrimaryCta')} →
               </Link>
               <Link href={`/${locale}/about`} className="btn-ghost">
                 {t('heroSecondaryCta')}
               </Link>
             </div>
+          </Reveal>
+          <Reveal delay={420}>
+            <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-xs font-bold uppercase tracking-wider text-cream-100/65">
+              {['Практично', 'Лесно', 'Приложимо', 'Резултатно'].map((k) => (
+                <li key={k} className="flex items-center gap-1.5">
+                  <span className="text-lime-400">✓</span> {k}
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </div>
       </section>
@@ -64,11 +77,11 @@ export default async function HomePage({
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {credentials.map((c, i) => (
                 <Reveal key={c.id} delay={i * 80}>
-                  <div className="border-l border-gold-300/30 pl-5">
-                    <div className="serif text-4xl font-medium text-gold-300">
+                  <div className="border-l-2 border-cyan-400/40 pl-5">
+                    <div className="serif text-4xl font-black text-gradient-brand">
                       {pick(c, 'value', locale)}
                     </div>
-                    <div className="mt-1 text-sm text-cream-100/65">
+                    <div className="mt-1 text-sm text-cream-100/70">
                       {pick(c, 'label', locale)}
                     </div>
                   </div>
@@ -121,7 +134,7 @@ export default async function HomePage({
                       height="28"
                       viewBox="0 0 24 24"
                       fill="none"
-                      className="text-gold-300/70"
+                      className="text-cyan-300/70"
                     >
                       <path
                         d="M9 7c-3 0-5 2-5 5v5h5v-5H6c0-2 1.5-3 3-3V7zm10 0c-3 0-5 2-5 5v5h5v-5h-3c0-2 1.5-3 3-3V7z"
