@@ -1,9 +1,29 @@
+import { prisma } from '@/lib/db';
+
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
   const rawUrl = process.env.DATABASE_URL ?? '';
   const password = rawUrl.match(/:([^@:/]+)@/)?.[1] ?? '';
+
+  let dbProbe: Record<string, unknown> = { ran: false };
+  try {
+    const start = Date.now();
+    const result = await prisma.$queryRawUnsafe<Array<{ n: number }>>('SELECT 1 as n');
+    dbProbe = { ran: true, ok: true, took_ms: Date.now() - start, result };
+  } catch (err) {
+    const e = err as Error & { code?: string; meta?: unknown };
+    dbProbe = {
+      ran: true,
+      ok: false,
+      name: e.name,
+      message: e.message,
+      code: e.code,
+      meta: e.meta,
+      stack: e.stack?.split('\n').slice(0, 5).join('\n'),
+    };
+  }
 
   const diagnostics = {
     DATABASE_URL_set: rawUrl.length > 0,
@@ -24,6 +44,7 @@ export async function GET() {
     LINKTREE_URL: process.env.LINKTREE_URL ?? null,
     EMAIL_FROM: process.env.EMAIL_FROM ?? null,
     NODE_ENV: process.env.NODE_ENV,
+    dbProbe,
     timestamp: new Date().toISOString(),
   };
 
