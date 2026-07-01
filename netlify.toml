@@ -1,5 +1,5 @@
 [build]
-  command = "prisma generate && next build"
+  command = "rm -rf node_modules/.prisma node_modules/@prisma/client/runtime && prisma generate && next build"
   publish = ".next"
 
 [build.environment]
