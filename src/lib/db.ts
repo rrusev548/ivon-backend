@@ -1,25 +1,16 @@
 import { PrismaClient } from '@prisma/client';
+import { PrismaPg } from '@prisma/adapter-pg';
+import { Pool } from 'pg';
 
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 
-const rawUrl = process.env.DATABASE_URL ?? '';
-const urlPrefix = rawUrl.slice(0, 25);
-const urlSuffix = rawUrl.length > 25 ? rawUrl.slice(-25) : '';
-const passwordSection = rawUrl.match(/:([^@:/]+)@/)?.[1] ?? '';
-console.log(
-  '[db] DATABASE_URL diagnostics — length:',
-  rawUrl.length,
-  '| prefix:',
-  urlPrefix,
-  '| suffix:',
-  urlSuffix,
-  '| password length:',
-  passwordSection.length,
-  '| password fingerprint:',
-  passwordSection.slice(0, 3) + '...' + passwordSection.slice(-3),
-);
+function createPrisma(): PrismaClient {
+  const connectionString = process.env.DATABASE_URL;
+  const pool = new Pool({ connectionString, max: 3 });
+  const adapter = new PrismaPg(pool);
+  return new PrismaClient({ adapter, log: ['error', 'warn'] });
+}
 
-export const prisma =
-  globalForPrisma.prisma ?? new PrismaClient({ log: ['error', 'warn'] });
+export const prisma = globalForPrisma.prisma ?? createPrisma();
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
