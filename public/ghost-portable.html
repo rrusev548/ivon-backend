@@ -1081,9 +1081,9 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
   :root{
     --bg:#050508;
     --bg-2:#0a0a14;
-    --glass:rgba(255,255,255,0.04);
+    --glass:rgba(255,255,255,0.03);
     --glass-strong:rgba(255,255,255,0.08);
-    --border:rgba(255,255,255,0.08);
+    --border:rgba(255,255,255,0.06);
     --border-strong:rgba(255,255,255,0.14);
     --text:#F1F5F9;
     --muted:#475569;
@@ -1094,7 +1094,7 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
     --red:#EF4444;
     --green:#10B981;
     --gradient:linear-gradient(135deg,#7C3AED 0%,#06B6D4 100%);
-    --radius-panel:20px;
+    --radius-panel:12px;
     --radius-button:12px;
     --shadow-glow:0 8px 32px rgba(124,58,237,0.18);
   }
@@ -1107,8 +1107,7 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
     overflow-x:hidden;
     overscroll-behavior:none;
     background-image:
-      radial-gradient(circle at 20% 10%, rgba(124,58,237,0.10), transparent 40%),
-      radial-gradient(circle at 80% 90%, rgba(6,182,212,0.08), transparent 40%),
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(124,58,237,0.12), transparent 60%),
       linear-gradient(180deg,#050508 0%, #07070d 100%);
     min-height:100vh;
     min-height:100dvh;
@@ -1195,11 +1194,13 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
   }
   .btn:active{transform:scale(.96);transition:transform 80ms ease-out}
   .btn-primary{
-    background:linear-gradient(135deg, #5F2EB6 0%, #078BA4 100%);
+    background:var(--violet);
     border:none;color:white;
-    box-shadow:0 4px 16px rgba(124,58,237,0.09);
+    box-shadow:none;
+    transition:background .15s ease, transform .08s ease;
   }
-  .btn-primary:hover{box-shadow:0 6px 20px rgba(124,58,237,0.16)}
+  .btn-primary:hover{background:#8B5CF6}
+  .btn-primary:active{transform:scale(.97)}
   .btn-ghost{background:transparent;border:1px solid var(--border-strong)}
   .btn-link{background:none;border:none;color:var(--muted-2);font-size:12px;text-decoration:underline;cursor:pointer;font-family:'Inter',sans-serif;padding:6px}
 
@@ -1700,6 +1701,7 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
     <div class="spacer"></div>
 
     <button class="btn btn-primary mb-1" id="btn-connect">CONNECT</button>
+    <button class="btn btn-ghost mb-1" id="btn-invite">📱 INVITE VIA QR</button>
     <button class="btn btn-ghost" id="btn-wait">WAIT FOR CALL</button>
     <button class="btn-link" id="btn-back-id">← Back</button>
   </div>
@@ -1763,6 +1765,52 @@ jv.\xC9\xC2\x81\x85,r\x92\xA1\xE8\xBF\xA2Kf\xA8p\x8BK\xC2\xA3Ql\xC7\xE8\x92\xD
     <div class="code-msg" id="code-msg-paywall"></div>
     <div class="modal-actions">
       <button class="btn btn-ghost" id="paywall-close">CLOSE</button>
+    </div>
+  </div>
+</div>
+
+<!-- invite modal -->
+<div class="modal-backdrop" id="invite-modal">
+  <div class="modal">
+    <h3 class="display">Invite a ghost</h3>
+    <p>Let them scan this with their camera — they'll connect to you automatically.</p>
+    <div class="qr-wrap"><div class="qr"><img id="invite-qr-img" alt="Invite QR" /></div></div>
+    <div class="subtle" id="invite-link-label" style="word-break:break-all;font-size:11px;margin-top:8px"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="invite-copy">COPY LINK</button>
+      <button class="btn btn-primary" id="invite-share">SHARE</button>
+    </div>
+    <button class="btn-link" id="invite-close" style="width:100%;margin-top:8px">CLOSE</button>
+  </div>
+</div>
+
+<!-- admin panel -->
+<div class="modal-backdrop" id="admin-modal">
+  <div class="modal" style="max-height:85vh;overflow-y:auto">
+    <h3 class="display">Admin</h3>
+    <div id="admin-locked">
+      <p>Enter passphrase.</p>
+      <div class="code-row">
+        <input type="password" id="admin-pass" placeholder="passphrase" />
+        <button id="admin-unlock">UNLOCK</button>
+      </div>
+      <div class="code-msg" id="admin-msg"></div>
+    </div>
+    <div id="admin-content" class="hidden">
+      <div class="subtle mb-1" style="text-align:left">DIAGNOSTICS</div>
+      <pre id="admin-diag" style="font-size:10px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:10px;overflow-x:auto;color:#94A3B8;white-space:pre-wrap"></pre>
+      <div class="subtle mb-1 mt-2" style="text-align:left">PREMIUM CODES</div>
+      <pre id="admin-codes" style="font-size:10px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:10px;overflow-x:auto;color:#94A3B8;white-space:pre-wrap"></pre>
+      <div class="subtle mb-1 mt-2" style="text-align:left">INVITE GENERATOR</div>
+      <div class="code-row">
+        <input type="text" id="admin-invite-id" placeholder="GH-XXXX" maxlength="7" />
+        <button id="admin-invite-gen">QR</button>
+      </div>
+      <div class="qr-wrap hidden" id="admin-invite-qr-wrap"><div class="qr"><img id="admin-invite-qr" alt="Invite QR" /></div></div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="admin-reset" style="color:#FCA5A5">RESET ALL DATA</button>
+        <button class="btn btn-primary" id="admin-close">CLOSE</button>
+      </div>
     </div>
   </div>
 </div>
@@ -4103,6 +4151,7 @@ var qrcode = function() {
   const REVTAG = '@ghostchat';
   const CONTACT = '@ghostchat on Telegram';
   const MSG_TTL_MS = 15000;
+  const ADMIN_PASSPHRASE = 'ghost-admin-2026'; // casual gate for the #admin diagnostics panel
 
 
   const VALID_CODES = {
@@ -4528,7 +4577,54 @@ var qrcode = function() {
       initiatePeer(() => connectTo(target));
     };
     $('#btn-wait').onclick = () => initiatePeer();
+    $('#btn-invite').onclick = () => openInviteModal(state.ghostId);
     initiatePeer();
+  };
+
+  // ---------- INVITE (QR + deep link) ----------
+  const inviteLinkFor = (ghostId) => {
+    const base = location.protocol === 'file:'
+      ? 'https://digitalsteam.netlify.app/ghost.html'
+      : location.origin + location.pathname;
+    return `${base}#connect=${encodeURIComponent(ghostId)}`;
+  };
+
+  const openInviteModal = (ghostId) => {
+    const link = inviteLinkFor(ghostId);
+    $('#invite-qr-img').src = qrUrl(link);
+    $('#invite-link-label').textContent = link;
+    $('#invite-modal').classList.add('active');
+    $('#invite-copy').onclick = async () => {
+      try { await navigator.clipboard.writeText(link); toast('Invite link copied'); }
+      catch { toast('Copy failed — long-press the link text'); }
+    };
+    $('#invite-share').onclick = async () => {
+      if (navigator.share) {
+        try { await navigator.share({ title: 'Ghost Chat', text: 'Connect with me on Ghost Chat 👻', url: link }); } catch {}
+      } else {
+        try { await navigator.clipboard.writeText(link); toast('Invite link copied'); } catch {}
+      }
+    };
+    $('#invite-close').onclick = () => $('#invite-modal').classList.remove('active');
+  };
+
+  // Deep link: #connect=GH-XXXX → skip onboarding, auto-connect to that peer
+  const handleDeepLink = () => {
+    const m = location.hash.match(/^#connect=(GH-[A-Z0-9#@!?%]{4,20})/i);
+    if (!m) return false;
+    let target;
+    try { target = decodeURIComponent(m[1]).toUpperCase(); } catch { target = m[1].toUpperCase(); }
+    if (!ID_RE_INPUT.test(target)) { WARN('deep link invalid id', target); return false; }
+    LOG('deep link connect →', target);
+    history.replaceState(null, '', location.pathname + location.search); // don't re-trigger on refresh
+    loadOrCreateGhostId();
+    loadOrCreateUsername();
+    setScreen('connect');
+    initConnectScreen();
+    $('#peer-input').value = target.slice(3);
+    setConnStatus('invited · dialing ' + target + '...', { pulse: true });
+    initiatePeer(() => connectTo(target));
+    return true;
   };
 
   const showConnError = (msg) => {
@@ -5006,7 +5102,6 @@ var qrcode = function() {
   // ---------- INIT ----------
   const init = async () => {
     LOG('boot');
-    initParticles();
     loadPremium();
     initRefs();
     state.freeUsed = localStorage.getItem('ghost_free_used') === '1';
@@ -5019,8 +5114,70 @@ var qrcode = function() {
       if (badge) { badge.textContent = '⚠ PLAINTEXT'; badge.classList.remove('badge-violet'); badge.classList.add('badge-gold'); }
     }
     registerSW();
+    initAdminPanel();
+    // Deep link invite: #connect=GH-XXXX skips onboarding and dials the peer
+    handleDeepLink();
     // Test harness — opt-in via ?test=1#tests (double gate: hidden from accidental discovery)
     if (location.search.includes('test=1') && location.hash === '#tests') initTestHarness();
+  };
+
+  // ---------- ADMIN PANEL (#admin) ----------
+  const initAdminPanel = () => {
+    const openIfAdminHash = () => {
+      if (location.hash !== '#admin') return;
+      $('#admin-modal').classList.add('active');
+      $('#admin-locked').classList.remove('hidden');
+      $('#admin-content').classList.add('hidden');
+      $('#admin-pass').value = '';
+    };
+    window.addEventListener('hashchange', openIfAdminHash);
+    openIfAdminHash();
+
+    $('#admin-unlock').onclick = () => {
+      if ($('#admin-pass').value !== ADMIN_PASSPHRASE) {
+        $('#admin-msg').textContent = 'Wrong passphrase';
+        $('#admin-msg').style.color = '#FCA5A5';
+        return;
+      }
+      $('#admin-locked').classList.add('hidden');
+      $('#admin-content').classList.remove('hidden');
+      renderAdmin();
+    };
+    $('#admin-close').onclick = () => {
+      $('#admin-modal').classList.remove('active');
+      history.replaceState(null, '', location.pathname + location.search);
+    };
+    $('#admin-reset').onclick = () => {
+      ['ghost_id','ghost_id_expiry','ghost_username','ghost_premium','ghost_ref_count',
+       'ghost_referral_from','ghost_free_used','ghost_tour_done','ghost_ios_hint',
+       'ghost_msg_total','ghost_last_session']
+        .forEach(k => { try { localStorage.removeItem(k); } catch {} });
+      toast('All local data cleared');
+      renderAdmin();
+    };
+    $('#admin-invite-gen').onclick = () => {
+      const raw = ($('#admin-invite-id').value || '').trim().toUpperCase();
+      const id = raw.startsWith('GH-') ? raw : 'GH-' + raw;
+      if (!ID_RE_INPUT.test(id)) { toast('Invalid ID — use GH-XXXX'); return; }
+      $('#admin-invite-qr').src = qrUrl(inviteLinkFor(id));
+      $('#admin-invite-qr-wrap').classList.remove('hidden');
+    };
+  };
+
+  const renderAdmin = () => {
+    const ls = {};
+    ['ghost_id','ghost_id_expiry','ghost_username','ghost_premium','ghost_ref_count',
+     'ghost_referral_from','ghost_free_used','ghost_tour_done','ghost_msg_total','ghost_last_session']
+      .forEach(k => { ls[k] = localStorage.getItem(k); });
+    $('#admin-diag').textContent = JSON.stringify({
+      sodium: state.sodiumReady ? 'ready' : 'UNAVAILABLE',
+      peer: state.peer ? (state.peer.destroyed ? 'destroyed' : 'active') : 'none',
+      conn: state.conn ? (state.conn.open ? 'open' : 'closed') : 'none',
+      screen: state.screen,
+      localStorage: ls,
+    }, null, 1);
+    $('#admin-codes').textContent = Object.entries(VALID_CODES)
+      .map(([code, def]) => `${code}  →  ${def.days}d  (${def.label})`).join('\n');
   };
 
   // expose internals for the optional in-page test harness only
@@ -5046,7 +5203,7 @@ var qrcode = function() {
     document.getElementById('test-run').onclick = runAllTests;
   };
 
-  const TEST_LS_KEYS = ['ghost_id','ghost_id_expiry','ghost_premium','ghost_ref_count','ghost_referral_from','ghost_free_used','ghost_tour_done'];
+  const TEST_LS_KEYS = ['ghost_id','ghost_id_expiry','ghost_username','ghost_premium','ghost_ref_count','ghost_referral_from','ghost_free_used','ghost_tour_done'];
   const resetSandbox = () => {
     TEST_LS_KEYS.forEach(k => { try { localStorage.removeItem(k); } catch {} });
     Object.assign(state, {
@@ -5174,6 +5331,17 @@ var qrcode = function() {
       const msg = document.querySelector('#chat-messages .msg.mine');
       assert(msg && msg.classList.contains('burned'), 'message should be marked burned, classes: ' + (msg?.className || 'NONE'));
       assert(/^\[ burned ·/.test(msg.textContent), 'placeholder text wrong: ' + msg.textContent);
+    }},
+    { name: 'invite link format', fn: async () => {
+      const link = inviteLinkFor('GH-ABCD');
+      assert(link.includes('#connect=GH-ABCD'), 'link missing connect hash: ' + link);
+      assert(link.startsWith('http'), 'link should be absolute: ' + link);
+    }},
+    { name: 'username generated + persisted', fn: async () => {
+      resetSandbox();
+      loadOrCreateUsername();
+      assert(state.username && state.username.length >= 5, 'username missing: ' + state.username);
+      assert(localStorage.getItem('ghost_username') === state.username, 'username not persisted');
     }},
     { name: 'kx → encrypt → decrypt round-trip', fn: async () => {
       if (!state.sodiumReady) return { skipped: true };

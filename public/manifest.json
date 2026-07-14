@@ -1,0 +1,17 @@
+{
+  "name": "Ghost Chat",
+  "short_name": "Ghost",
+  "description": "Anonymous ephemeral P2P chat. No servers. No logs. No trace.",
+  "id": "/ghost.html",
+  "start_url": "/ghost.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#050508",
+  "theme_color": "#050508",
+  "icons": [
+    { "src": "/icons/ghost-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/ghost-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/ghost-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
