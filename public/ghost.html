@@ -4058,8 +4058,9 @@ var qrcode = function() {
   };
 
   // ---------- INIT ----------
+  const GHOST_BUILD = 'build-2026-07-14-r1';
   const init = async () => {
-    LOG('boot');
+    LOG('boot', GHOST_BUILD);
     loadPremium();
     initRefs();
     state.freeUsed = localStorage.getItem('ghost_free_used') === '1';
@@ -4129,6 +4130,7 @@ var qrcode = function() {
      'ghost_referral_from','ghost_free_used','ghost_tour_done','ghost_msg_total','ghost_last_session']
       .forEach(k => { ls[k] = localStorage.getItem(k); });
     $('#admin-diag').textContent = JSON.stringify({
+      build: GHOST_BUILD,
       sodium: state.sodiumReady ? 'ready' : 'UNAVAILABLE',
       peer: state.peer ? (state.peer.destroyed ? 'destroyed' : 'active') : 'none',
       conn: state.conn ? (state.conn.open ? 'open' : 'closed') : 'none',
