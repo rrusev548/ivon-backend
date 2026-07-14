@@ -8,7 +8,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="description" content="Ghost Chat — anonymous ephemeral P2P chat. No servers. No logs. No trace." />
 <title>👻 GHOST</title>
-<link rel="manifest" href='data:application/manifest+json;utf8,{"name":"Ghost Chat","short_name":"Ghost","start_url":"./","display":"standalone","background_color":"#050508","theme_color":"#050508","icons":[]}' />
+<link rel="manifest" href="/manifest.json" />
+<link rel="apple-touch-icon" href="/icons/ghost-180.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/icons/ghost-192.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" />
@@ -18,9 +20,9 @@
   :root{
     --bg:#050508;
     --bg-2:#0a0a14;
-    --glass:rgba(255,255,255,0.04);
+    --glass:rgba(255,255,255,0.03);
     --glass-strong:rgba(255,255,255,0.08);
-    --border:rgba(255,255,255,0.08);
+    --border:rgba(255,255,255,0.06);
     --border-strong:rgba(255,255,255,0.14);
     --text:#F1F5F9;
     --muted:#475569;
@@ -31,7 +33,7 @@
     --red:#EF4444;
     --green:#10B981;
     --gradient:linear-gradient(135deg,#7C3AED 0%,#06B6D4 100%);
-    --radius-panel:20px;
+    --radius-panel:12px;
     --radius-button:12px;
     --shadow-glow:0 8px 32px rgba(124,58,237,0.18);
   }
@@ -44,8 +46,7 @@
     overflow-x:hidden;
     overscroll-behavior:none;
     background-image:
-      radial-gradient(circle at 20% 10%, rgba(124,58,237,0.10), transparent 40%),
-      radial-gradient(circle at 80% 90%, rgba(6,182,212,0.08), transparent 40%),
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(124,58,237,0.12), transparent 60%),
       linear-gradient(180deg,#050508 0%, #07070d 100%);
     min-height:100vh;
     min-height:100dvh;
@@ -89,18 +90,19 @@
   .logo-md{width:32px;height:32px}
   .logo-sm{width:24px;height:24px}
   .brand{
-    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:48px;
-    letter-spacing:.16em;
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:56px;
+    letter-spacing:.24em;
     background:var(--gradient);
     -webkit-background-clip:text;background-clip:text;color:transparent;
     text-align:center;line-height:1;
   }
   .brand-badge{
     display:inline-flex;align-items:center;gap:4px;
-    font-size:10px;font-weight:700;letter-spacing:.18em;
-    padding:3px 8px;border-radius:6px;
-    background:var(--violet);color:white;
-    vertical-align:middle;margin-left:6px;
+    font-size:9px;font-weight:600;letter-spacing:.22em;
+    padding:3px 9px;border-radius:6px;
+    background:rgba(124,58,237,0.18);color:rgba(196,181,253,0.85);
+    border:1px solid rgba(124,58,237,0.30);
+    margin-top:8px;
   }
   .tagline{font-family:'Space Grotesk',sans-serif;text-align:center;font-size:15px;line-height:1.4;color:var(--text);margin:4px 0 8px;font-weight:500;padding:0 12px}
   .subtle{text-align:center;font-size:12px;color:var(--muted-2);letter-spacing:.05em}
@@ -129,13 +131,15 @@
     background:var(--glass);color:var(--text);
     cursor:pointer;transition:transform .15s ease, box-shadow .15s ease;
   }
-  .btn:active{transform:scale(.98)}
+  .btn:active{transform:scale(.96);transition:transform 80ms ease-out}
   .btn-primary{
-    background:var(--gradient);
+    background:var(--violet);
     border:none;color:white;
-    box-shadow:var(--shadow-glow);
+    box-shadow:none;
+    transition:background .15s ease, transform .08s ease;
   }
-  .btn-primary:hover{box-shadow:0 12px 40px rgba(124,58,237,0.32)}
+  .btn-primary:hover{background:#8B5CF6}
+  .btn-primary:active{transform:scale(.97)}
   .btn-ghost{background:transparent;border:1px solid var(--border-strong)}
   .btn-link{background:none;border:none;color:var(--muted-2);font-size:12px;text-decoration:underline;cursor:pointer;font-family:'Inter',sans-serif;padding:6px}
 
@@ -403,7 +407,7 @@
     border:none;color:white;cursor:pointer;display:flex;align-items:center;justify-content:center;
     box-shadow:var(--shadow-glow);
   }
-  .send-btn:active{transform:scale(.94)}
+  .send-btn:active{transform:scale(.92);transition:transform 80ms ease-out}
 
   /* toast */
   .toast-wrap{position:fixed;top:18px;right:14px;left:14px;display:flex;flex-direction:column;gap:8px;z-index:200;pointer-events:none;align-items:flex-end}
@@ -505,10 +509,11 @@
         <circle cx="19" cy="19" r="2.5" fill="white" opacity="0.9"/>
         <circle cx="29" cy="19" r="2.5" fill="white" opacity="0.9"/>
       </svg>
-      <div class="brand">GHOST<span class="brand-badge">BETA v0.1</span></div>
+      <div class="brand">GHOST</div>
+      <div class="brand-badge">BETA v0.1</div>
     </div>
 
-    <div class="tagline">The first message that proves its own disappearance.</div>
+    <div class="tagline">Messages that vanish the moment they're read.</div>
     <div class="subtle">No servers. No logs. No trace.</div>
 
     <div class="glass panel">
@@ -533,21 +538,22 @@
 
       <div class="plan-grid">
         <div class="plan-card locked">
-          <div class="plan-name">SPECTER</div>
+          <div class="plan-name">MONTHLY</div>
           <div class="plan-state">SOON</div>
         </div>
         <div class="plan-card locked">
-          <div class="plan-name">PHANTOM</div>
+          <div class="plan-name">QUARTERLY</div>
           <div class="plan-state">SOON</div>
         </div>
         <div class="plan-card locked">
-          <div class="plan-name">ULTRA</div>
+          <div class="plan-name">LIFETIME</div>
           <div class="plan-state">SOON</div>
         </div>
       </div>
     </div>
 
     <button class="btn btn-primary mt-2" id="btn-start">START FREE SESSION →</button>
+    <button class="btn btn-ghost mt-1 hidden" id="btn-install">📲 INSTALL APP</button>
 
     <div class="ref">
       <div class="ref-counter" id="ref-counter">✦ Referral 34/88 · 54 spots remaining</div>
@@ -569,7 +575,7 @@
     </div>
 
     <div class="subtle mt-2" style="line-height:1.5;padding:0 8px">
-      Soft beta · QR is real but no automated subscription yet · DM for free codes
+      Pre-alpha — send me a message if you want a free code 👻
     </div>
   </div>
 
@@ -583,9 +589,10 @@
     </div>
 
     <div class="id-card">
-      <div class="ghost-id-display" id="ghost-id-display">GH-····</div>
+      <div id="username-display" style="font-family:'Space Grotesk';font-size:28px;font-weight:700;background:linear-gradient(135deg,#7C3AED,#06B6D4);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.02em;margin-bottom:6px">@···</div>
+      <div class="ghost-id-display" id="ghost-id-display" style="font-size:18px;opacity:.65;letter-spacing:.18em">GH-····</div>
       <div class="id-meta">Resets in <b id="countdown">--:--:--</b></div>
-      <div class="id-edit-hint" id="edit-hint">FREE: random A–Z · Upgrade to pick your own from 40 symbols</div>
+      <div class="id-edit-hint" id="edit-hint">Auto-generated username · tap reroll for a new one</div>
     </div>
 
     <div class="free-note">Pool: A–Z, 0–9, #, @, !, ? · 40⁴ = 2,560,000 combos</div>
@@ -605,7 +612,7 @@
     </div>
 
     <div class="own-id">
-      Your ID: <b id="own-id-label">GH-····</b>
+      You: <b id="own-username-label">@···</b> · <span id="own-id-label" style="opacity:.6;font-size:13px">GH-····</span>
       <button class="copy-btn" id="btn-copy-id">copy</button>
     </div>
 
@@ -634,6 +641,7 @@
     <div class="spacer"></div>
 
     <button class="btn btn-primary mb-1" id="btn-connect">CONNECT</button>
+    <button class="btn btn-ghost mb-1" id="btn-invite">📱 INVITE VIA QR</button>
     <button class="btn btn-ghost" id="btn-wait">WAIT FOR CALL</button>
     <button class="btn-link" id="btn-back-id">← Back</button>
   </div>
@@ -697,6 +705,52 @@
     <div class="code-msg" id="code-msg-paywall"></div>
     <div class="modal-actions">
       <button class="btn btn-ghost" id="paywall-close">CLOSE</button>
+    </div>
+  </div>
+</div>
+
+<!-- invite modal -->
+<div class="modal-backdrop" id="invite-modal">
+  <div class="modal">
+    <h3 class="display">Invite a ghost</h3>
+    <p>Let them scan this with their camera — they'll connect to you automatically.</p>
+    <div class="qr-wrap"><div class="qr"><img id="invite-qr-img" alt="Invite QR" /></div></div>
+    <div class="subtle" id="invite-link-label" style="word-break:break-all;font-size:11px;margin-top:8px"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="invite-copy">COPY LINK</button>
+      <button class="btn btn-primary" id="invite-share">SHARE</button>
+    </div>
+    <button class="btn-link" id="invite-close" style="width:100%;margin-top:8px">CLOSE</button>
+  </div>
+</div>
+
+<!-- admin panel -->
+<div class="modal-backdrop" id="admin-modal">
+  <div class="modal" style="max-height:85vh;overflow-y:auto">
+    <h3 class="display">Admin</h3>
+    <div id="admin-locked">
+      <p>Enter passphrase.</p>
+      <div class="code-row">
+        <input type="password" id="admin-pass" placeholder="passphrase" />
+        <button id="admin-unlock">UNLOCK</button>
+      </div>
+      <div class="code-msg" id="admin-msg"></div>
+    </div>
+    <div id="admin-content" class="hidden">
+      <div class="subtle mb-1" style="text-align:left">DIAGNOSTICS</div>
+      <pre id="admin-diag" style="font-size:10px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:10px;overflow-x:auto;color:#94A3B8;white-space:pre-wrap"></pre>
+      <div class="subtle mb-1 mt-2" style="text-align:left">PREMIUM CODES</div>
+      <pre id="admin-codes" style="font-size:10px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:10px;overflow-x:auto;color:#94A3B8;white-space:pre-wrap"></pre>
+      <div class="subtle mb-1 mt-2" style="text-align:left">INVITE GENERATOR</div>
+      <div class="code-row">
+        <input type="text" id="admin-invite-id" placeholder="GH-XXXX" maxlength="7" />
+        <button id="admin-invite-gen">QR</button>
+      </div>
+      <div class="qr-wrap hidden" id="admin-invite-qr-wrap"><div class="qr"><img id="admin-invite-qr" alt="Invite QR" /></div></div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="admin-reset" style="color:#FCA5A5">RESET ALL DATA</button>
+        <button class="btn btn-primary" id="admin-close">CLOSE</button>
+      </div>
     </div>
   </div>
 </div>
@@ -3037,6 +3091,7 @@ var qrcode = function() {
   const REVTAG = '@ghostchat';
   const CONTACT = '@ghostchat on Telegram';
   const MSG_TTL_MS = 15000;
+  const ADMIN_PASSPHRASE = 'ghost-admin-2026'; // casual gate for the #admin diagnostics panel
 
 
   const VALID_CODES = {
@@ -3060,6 +3115,7 @@ var qrcode = function() {
   const state = {
     screen: 'onboarding',
     ghostId: null,
+    username: null,
     peerId: null,
     peer: null,
     conn: null,
@@ -3166,14 +3222,14 @@ var qrcode = function() {
   const initParticles = () => {
     const wrap = $('#particles');
     if (!wrap) return;
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 12; i++) {
       const p = document.createElement('div');
       p.className = 'particle';
       p.style.left = Math.random() * 100 + 'vw';
       p.style.top = Math.random() * 100 + 'vh';
-      p.style.animationDuration = (20 + Math.random() * 30) + 's';
+      p.style.animationDuration = (32 + Math.random() * 40) + 's';
       p.style.animationDelay = (-Math.random() * 30) + 's';
-      p.style.opacity = (0.2 + Math.random() * 0.4).toFixed(2);
+      p.style.opacity = (0.10 + Math.random() * 0.15).toFixed(2);
       wrap.appendChild(p);
     }
   };
@@ -3206,6 +3262,31 @@ var qrcode = function() {
     lsSet('ghost_id', state.ghostId);
     lsSet('ghost_id_expiry', String(state.premiumInfo?.expiresAt || todayMidnight()));
     LOG('new ghost id', state.ghostId);
+  };
+
+
+  // ============ USERNAME ============
+  const USER_ADJ = ['Silent','Velvet','Misty','Smoky','Ghostly','Shadow','Hidden','Quiet','Soft','Dim','Faint','Pale','Sleek','Calm','Subtle','Frosted','Hazy','Muted','Phantom','Whisper','Dusky','Cold','Cool','Lone','Wise','Bold','Sharp','Swift','Mute','Veiled','Cloaked','Drifting','Floating','Wandering','Lurking','Roaming','Eerie','Vague','Slow','Distant','Curious','Listless','Echoing','Languid','Drowsy','Sleepy','Numb','Dormant','Frosty','Murky','Nimble','Stealthy','Roving','Wistful','Restless','Forsaken','Faded','Latent','Bashful','Solemn'];
+  const USER_NOUN = ['Fox','Owl','Moth','Heron','Ash','Mist','Ember','Wolf','Crow','Lynx','Stoat','Hare','Reed','Stag','Marten','Otter','Falcon','Pike','Beech','Pine','Yew','Cinder','Smoke','Dusk','Dawn','Frost','Brook','Tide','Glow','Spark','Sigil','Veil','Shroud','Cipher','Rune','Echo','Drift','Whim','Tale','Mote','Cairn','Cove','Glen','Thorn','Briar','Vale','Hush','Glade','Quill','Lantern'];
+
+  const generateUsername = () => {
+    const r = new Uint32Array(3);
+    crypto.getRandomValues(r);
+    const a = USER_ADJ[r[0] % USER_ADJ.length];
+    const n = USER_NOUN[r[1] % USER_NOUN.length];
+    const num = String(r[2] % 100).padStart(2, '0');
+    return a + n + num;
+  };
+
+  const loadOrCreateUsername = () => {
+    const stored = localStorage.getItem('ghost_username');
+    const exp = parseInt(localStorage.getItem('ghost_id_expiry') || '0', 10);
+    if (stored && exp > Date.now() && /^[A-Za-z]+\d{2}$/.test(stored)) {
+      state.username = stored;
+      return;
+    }
+    state.username = generateUsername();
+    lsSet('ghost_username', state.username);
   };
 
   // ---------- REFERRALS ----------
@@ -3306,6 +3387,7 @@ var qrcode = function() {
         return;
       }
       loadOrCreateGhostId();
+      loadOrCreateUsername();
       setScreen('id');
       initIdScreen();
       maybeStartTour();
@@ -3342,9 +3424,10 @@ var qrcode = function() {
   let countdownTimer = null;
   const initIdScreen = () => {
     $('#ghost-id-display').textContent = state.ghostId;
+    $('#username-display').textContent = '@' + (state.username || '···');
     $('#edit-hint').textContent = state.isPremium
       ? 'PRO: tap any 4 symbols below to compose your own ID'
-      : 'FREE: random A–Z · Upgrade to pick your own from 40 symbols';
+      : 'Auto-generated username · tap reroll for a new one';
     renderSymbolGrid();
 
     if (countdownTimer) clearInterval(countdownTimer);
@@ -3361,7 +3444,10 @@ var qrcode = function() {
 
     $('#btn-reroll').onclick = () => {
       localStorage.removeItem('ghost_id');
+      localStorage.removeItem('ghost_username');
       loadOrCreateGhostId();
+      loadOrCreateUsername();
+      $('#username-display').textContent = '@' + state.username;
       $('#ghost-id-display').textContent = state.ghostId;
       pickedSymbols = [];
       renderSymbolGrid();
@@ -3409,6 +3495,7 @@ var qrcode = function() {
   // ---------- CONNECT SCREEN ----------
   const initConnectScreen = () => {
     $('#own-id-label').textContent = state.ghostId;
+    $('#own-username-label').textContent = '@' + (state.username || '···');
     $('#ref-link-value').textContent = `ghostchat.app/r/${state.ghostId}`;
     $('#btn-copy-id').onclick = async () => {
       try { await navigator.clipboard.writeText(state.ghostId); toast('Ghost ID copied'); }
@@ -3431,7 +3518,54 @@ var qrcode = function() {
       initiatePeer(() => connectTo(target));
     };
     $('#btn-wait').onclick = () => initiatePeer();
+    $('#btn-invite').onclick = () => openInviteModal(state.ghostId);
     initiatePeer();
+  };
+
+  // ---------- INVITE (QR + deep link) ----------
+  const inviteLinkFor = (ghostId) => {
+    const base = location.protocol === 'file:'
+      ? 'https://digitalsteam.netlify.app/ghost.html'
+      : location.origin + location.pathname;
+    return `${base}#connect=${encodeURIComponent(ghostId)}`;
+  };
+
+  const openInviteModal = (ghostId) => {
+    const link = inviteLinkFor(ghostId);
+    $('#invite-qr-img').src = qrUrl(link);
+    $('#invite-link-label').textContent = link;
+    $('#invite-modal').classList.add('active');
+    $('#invite-copy').onclick = async () => {
+      try { await navigator.clipboard.writeText(link); toast('Invite link copied'); }
+      catch { toast('Copy failed — long-press the link text'); }
+    };
+    $('#invite-share').onclick = async () => {
+      if (navigator.share) {
+        try { await navigator.share({ title: 'Ghost Chat', text: 'Connect with me on Ghost Chat 👻', url: link }); } catch {}
+      } else {
+        try { await navigator.clipboard.writeText(link); toast('Invite link copied'); } catch {}
+      }
+    };
+    $('#invite-close').onclick = () => $('#invite-modal').classList.remove('active');
+  };
+
+  // Deep link: #connect=GH-XXXX → skip onboarding, auto-connect to that peer
+  const handleDeepLink = () => {
+    const m = location.hash.match(/^#connect=(GH-[A-Z0-9#@!?%]{4,20})/i);
+    if (!m) return false;
+    let target;
+    try { target = decodeURIComponent(m[1]).toUpperCase(); } catch { target = m[1].toUpperCase(); }
+    if (!ID_RE_INPUT.test(target)) { WARN('deep link invalid id', target); return false; }
+    LOG('deep link connect →', target);
+    history.replaceState(null, '', location.pathname + location.search); // don't re-trigger on refresh
+    loadOrCreateGhostId();
+    loadOrCreateUsername();
+    setScreen('connect');
+    initConnectScreen();
+    $('#peer-input').value = target.slice(3);
+    setConnStatus('invited · dialing ' + target + '...', { pulse: true });
+    initiatePeer(() => connectTo(target));
+    return true;
   };
 
   const showConnError = (msg) => {
@@ -3819,6 +3953,10 @@ var qrcode = function() {
     try { if (state.peer && !state.peer.destroyed) state.peer.destroy(); } catch {}
     state.peer = null; state.conn = null;
     state.sharedRx = state.sharedTx = state.kxPriv = state.kxPub = null;
+    // session stats for the admin panel
+    const total = parseInt(localStorage.getItem('ghost_msg_total') || '0', 10) + state.msgCount;
+    lsSet('ghost_msg_total', String(total));
+    lsSet('ghost_last_session', new Date().toISOString());
     $('#end-stats').textContent = `${state.msgCount} messages exchanged · All burned`;
     // restart fade animation
     const fadeLogo = document.querySelector('#screen-disconnect .logo-big');
@@ -3881,35 +4019,48 @@ var qrcode = function() {
     $('#tour-next').textContent = state.tourStep === TOUR.length - 1 ? 'GOT IT' : 'NEXT';
   };
 
-  // ---------- SERVICE WORKER ----------
+  // ---------- SERVICE WORKER + PWA INSTALL ----------
   const registerSW = () => {
     if (!('serviceWorker' in navigator)) return;
-    const swSource = `
-      const CACHE = 'ghost-v1';
-      self.addEventListener('install', (e) => { self.skipWaiting(); });
-      self.addEventListener('activate', (e) => { e.waitUntil(self.clients.claim()); });
-      self.addEventListener('fetch', (e) => {
-        const req = e.request;
-        if (req.method !== 'GET') return;
-        e.respondWith(
-          caches.open(CACHE).then(c => c.match(req).then(hit => {
-            const net = fetch(req).then(res => { try { c.put(req, res.clone()); } catch (e) {} return res; }).catch(() => hit);
-            return hit || net;
-          }))
-        );
-      });
-    `;
-    try {
-      const blob = new Blob([swSource], { type: 'application/javascript' });
-      const url = URL.createObjectURL(blob);
-      navigator.serviceWorker.register(url).then(reg => LOG('SW registered', reg.scope)).catch(e => WARN('SW reg', e));
-    } catch (e) { WARN('SW blob', e); }
+    if (location.protocol === 'file:') return; // portable variant runs from disk
+    navigator.serviceWorker.register('/ghost-sw.js')
+      .then(reg => LOG('SW registered', reg.scope))
+      .catch(e => WARN('SW reg', e));
+  };
+
+  let deferredInstallPrompt = null;
+  const initInstallUI = () => {
+    const btn = $('#btn-install');
+    if (!btn) return;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredInstallPrompt = e;
+      btn.classList.remove('hidden');
+      LOG('install prompt captured');
+    });
+    btn.addEventListener('click', async () => {
+      if (!deferredInstallPrompt) return;
+      deferredInstallPrompt.prompt();
+      const choice = await deferredInstallPrompt.userChoice;
+      LOG('install choice:', choice.outcome);
+      if (choice.outcome === 'accepted') btn.classList.add('hidden');
+      deferredInstallPrompt = null;
+    });
+    // iOS has no beforeinstallprompt — show a one-time hint instead
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+    if (isIOS && !standalone && localStorage.getItem('ghost_ios_hint') !== '1') {
+      setTimeout(() => {
+        toast('📲 Install: Share → Add to Home Screen');
+        lsSet('ghost_ios_hint', '1');
+      }, 4000);
+    }
   };
 
   // ---------- INIT ----------
+  const GHOST_BUILD = 'build-2026-07-14-r1';
   const init = async () => {
-    LOG('boot');
-    initParticles();
+    LOG('boot', GHOST_BUILD);
     loadPremium();
     initRefs();
     state.freeUsed = localStorage.getItem('ghost_free_used') === '1';
@@ -3922,8 +4073,72 @@ var qrcode = function() {
       if (badge) { badge.textContent = '⚠ PLAINTEXT'; badge.classList.remove('badge-violet'); badge.classList.add('badge-gold'); }
     }
     registerSW();
+    initInstallUI();
+    initAdminPanel();
+    // Deep link invite: #connect=GH-XXXX skips onboarding and dials the peer
+    handleDeepLink();
     // Test harness — opt-in via ?test=1#tests (double gate: hidden from accidental discovery)
     if (location.search.includes('test=1') && location.hash === '#tests') initTestHarness();
+  };
+
+  // ---------- ADMIN PANEL (#admin) ----------
+  const initAdminPanel = () => {
+    const openIfAdminHash = () => {
+      if (location.hash !== '#admin') return;
+      $('#admin-modal').classList.add('active');
+      $('#admin-locked').classList.remove('hidden');
+      $('#admin-content').classList.add('hidden');
+      $('#admin-pass').value = '';
+    };
+    window.addEventListener('hashchange', openIfAdminHash);
+    openIfAdminHash();
+
+    $('#admin-unlock').onclick = () => {
+      if ($('#admin-pass').value !== ADMIN_PASSPHRASE) {
+        $('#admin-msg').textContent = 'Wrong passphrase';
+        $('#admin-msg').style.color = '#FCA5A5';
+        return;
+      }
+      $('#admin-locked').classList.add('hidden');
+      $('#admin-content').classList.remove('hidden');
+      renderAdmin();
+    };
+    $('#admin-close').onclick = () => {
+      $('#admin-modal').classList.remove('active');
+      history.replaceState(null, '', location.pathname + location.search);
+    };
+    $('#admin-reset').onclick = () => {
+      ['ghost_id','ghost_id_expiry','ghost_username','ghost_premium','ghost_ref_count',
+       'ghost_referral_from','ghost_free_used','ghost_tour_done','ghost_ios_hint',
+       'ghost_msg_total','ghost_last_session']
+        .forEach(k => { try { localStorage.removeItem(k); } catch {} });
+      toast('All local data cleared');
+      renderAdmin();
+    };
+    $('#admin-invite-gen').onclick = () => {
+      const raw = ($('#admin-invite-id').value || '').trim().toUpperCase();
+      const id = raw.startsWith('GH-') ? raw : 'GH-' + raw;
+      if (!ID_RE_INPUT.test(id)) { toast('Invalid ID — use GH-XXXX'); return; }
+      $('#admin-invite-qr').src = qrUrl(inviteLinkFor(id));
+      $('#admin-invite-qr-wrap').classList.remove('hidden');
+    };
+  };
+
+  const renderAdmin = () => {
+    const ls = {};
+    ['ghost_id','ghost_id_expiry','ghost_username','ghost_premium','ghost_ref_count',
+     'ghost_referral_from','ghost_free_used','ghost_tour_done','ghost_msg_total','ghost_last_session']
+      .forEach(k => { ls[k] = localStorage.getItem(k); });
+    $('#admin-diag').textContent = JSON.stringify({
+      build: GHOST_BUILD,
+      sodium: state.sodiumReady ? 'ready' : 'UNAVAILABLE',
+      peer: state.peer ? (state.peer.destroyed ? 'destroyed' : 'active') : 'none',
+      conn: state.conn ? (state.conn.open ? 'open' : 'closed') : 'none',
+      screen: state.screen,
+      localStorage: ls,
+    }, null, 1);
+    $('#admin-codes').textContent = Object.entries(VALID_CODES)
+      .map(([code, def]) => `${code}  →  ${def.days}d  (${def.label})`).join('\n');
   };
 
   // expose internals for the optional in-page test harness only
@@ -3949,7 +4164,7 @@ var qrcode = function() {
     document.getElementById('test-run').onclick = runAllTests;
   };
 
-  const TEST_LS_KEYS = ['ghost_id','ghost_id_expiry','ghost_premium','ghost_ref_count','ghost_referral_from','ghost_free_used','ghost_tour_done'];
+  const TEST_LS_KEYS = ['ghost_id','ghost_id_expiry','ghost_username','ghost_premium','ghost_ref_count','ghost_referral_from','ghost_free_used','ghost_tour_done'];
   const resetSandbox = () => {
     TEST_LS_KEYS.forEach(k => { try { localStorage.removeItem(k); } catch {} });
     Object.assign(state, {
@@ -4078,6 +4293,17 @@ var qrcode = function() {
       assert(msg && msg.classList.contains('burned'), 'message should be marked burned, classes: ' + (msg?.className || 'NONE'));
       assert(/^\[ burned ·/.test(msg.textContent), 'placeholder text wrong: ' + msg.textContent);
     }},
+    { name: 'invite link format', fn: async () => {
+      const link = inviteLinkFor('GH-ABCD');
+      assert(link.includes('#connect=GH-ABCD'), 'link missing connect hash: ' + link);
+      assert(link.startsWith('http'), 'link should be absolute: ' + link);
+    }},
+    { name: 'username generated + persisted', fn: async () => {
+      resetSandbox();
+      loadOrCreateUsername();
+      assert(state.username && state.username.length >= 5, 'username missing: ' + state.username);
+      assert(localStorage.getItem('ghost_username') === state.username, 'username not persisted');
+    }},
     { name: 'kx → encrypt → decrypt round-trip', fn: async () => {
       if (!state.sodiumReady) return { skipped: true };
       const a = sodium.crypto_kx_keypair();
@@ -4125,6 +4351,11 @@ var qrcode = function() {
       <span style="color:#A78BFA">total ${TESTS.length}</span>`;
     console.log('[GHOST-TEST] DONE', { pass, fail, skip, total: TESTS.length });
   };
+
+
+  // Boot — attach to DOM ready (this was missing — caused all buttons to silently do nothing)
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 
 })();
 </script>
