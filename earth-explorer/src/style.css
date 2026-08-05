@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .glass {
+    @apply rounded-xl border border-white/10 bg-glass shadow-lg shadow-black/40 backdrop-blur-glass;
+  }
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs font-medium text-white/80 transition-colors hover:bg-white/15 hover:text-white active:bg-white/20 disabled:pointer-events-none disabled:opacity-40;
+  }
+  .btn-active {
+    @apply border-sky-400/50 bg-sky-500/25 text-sky-100 hover:bg-sky-500/35;
+  }
+  .input {
+    @apply w-full rounded-lg border border-white/10 bg-black/30 px-2.5 py-1.5 text-sm text-white placeholder-white/30 outline-none transition-colors focus:border-sky-400/60;
+  }
+}
+
+/* Cesium chrome we cannot disable via the Viewer options */
+.cesium-viewer-bottom {
+  left: auto !important;
+  right: 8px !important;
+  bottom: 2px !important;
+  opacity: 0.55;
+  pointer-events: none;
+}
+.cesium-viewer-bottom a {
+  pointer-events: auto;
+}
+.cesium-performanceDisplay-defaultContainer {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
